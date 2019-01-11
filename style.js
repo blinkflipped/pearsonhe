@@ -2,11 +2,11 @@
   'use strict';
 
   var PearsonheDevStyle = function () {
-    blink.theme.styles.basic.apply(this, arguments);
+    blink.theme.styles.pearsonhe.apply(this, arguments);
   }
 
   PearsonheDevStyle.prototype = {
-    parent: blink.theme.styles.aprendizaje_basado_en_proyectos.prototype,
+    parent: blink.theme.styles.pearsonhe.prototype,
     bodyClassName: 'content_type_clase_pearsonhe_dev',
     ckEditorStyles: {
       name: 'pearsonhe-dev',
@@ -37,7 +37,7 @@
   };
 
 
-  PearsonheDevStyle.prototype = _.extend({}, new blink.theme.styles.aprendizaje_basado_en_proyectos(), PearsonheDevStyle.prototype);
+  PearsonheDevStyle.prototype = _.extend({}, new blink.theme.styles.pearsonhe(), PearsonheDevStyle.prototype);
 
   blink.theme.styles['pearsonhe-dev'] = PearsonheDevStyle;
 
