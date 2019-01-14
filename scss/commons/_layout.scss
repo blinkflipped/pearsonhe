@@ -1,0 +1,19 @@
+
+.body_curso {
+  position: relative;
+	z-index: 100;
+	-webkit-overflow-scrolling: touch;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-rendering: optimizeLegibility;
+	font-variant-ligatures: common-ligatures;
+	margin: 0;
+	padding: 0;
+	@include text--body();
+  background: $background_color;
+}
+
+.pearsonhe-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}

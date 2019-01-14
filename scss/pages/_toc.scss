@@ -1,0 +1,62 @@
+#indice {
+  .units {
+    ul {
+      li {
+        @include border-radius(0px);
+        background: $color_2;
+        a {
+          color: $color_1;
+          .title {
+            @include text-ui-large();
+            color: $color_1;
+            font-weight: 400;
+          }
+          &:not(.delete) {
+            padding: 14px 12px 11px;
+          }
+        }
+        &:not(.add) {
+          a {
+            .title {
+              margin-left: 0px;
+            }
+          }
+        }
+        &.active,
+        body:not(.isTablet) &:hover,
+        &:focus {
+          &:not(.disabled) {
+            background: $color_1;
+            a {
+              color: $color_2;
+              .title {
+                color: $color_2;
+                font-weight: 600;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .unit-content {
+    @include border-radius(0px);
+    .header {
+      height: 97px;
+      .title {
+        @include page-ui-heading-small();
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: auto;
+      }
+    }
+    .actividades {
+      .title-buttons {
+        display: none;
+      }
+    }
+  }
+
+}
