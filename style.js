@@ -66,25 +66,25 @@
 // ████░██▀░▀██░░██░░████░██░██░██░░██░██░░░██░████
 
 
-var pearonheApp = window.pearonheApp || {};
+var pearsonheApp = window.pearsonheApp || {};
 
-pearonheApp.courseData = '';
+pearsonheApp.courseData = '';
 
 pearsonheApp.getCourseData = function() {
 
 	loadJSON(function(json) {
 		console.log(json);
-		pearonheApp.courseData = json;
-		pearonheApp.init();
+		pearsonheApp.courseData = json;
+		pearsonheApp.init();
 	});
 
 }
 
-pearonheApp.getTocInfo = function() {
+pearsonheApp.getTocInfo = function() {
 
-	console.log(pearonheApp.courseData);
+	console.log(pearsonheApp.courseData);
 
-	var data = pearonheApp.courseData;
+	var data = pearsonheApp.courseData;
 
 	$.each(data.units, function(i, unit) {
 		var unitTitle = unit.title,
@@ -108,9 +108,9 @@ pearonheApp.getTocInfo = function() {
 
 // INIT
 
-pearonheApp.init = function() {
+pearsonheApp.init = function() {
 
-	pearonheApp.getTocInfo();
+	pearsonheApp.getTocInfo();
 
 }
 
