@@ -83,3 +83,90 @@
         display: none; }
       #indice .unit-content .actividades .item .pags {
         display: none; }
+
+#indice .unit-content .actividades .item.pearsonhe-icon .title::before {
+  content: '';
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: 0 0; }
+
+#indice .unit-content .actividades .item.pearsonhe-icon-animations .title::before {
+  background-image: url(images/icons/animaties.png); }
+
+#indice .unit-content .actividades .item.pearsonhe-icon-audio .title::before {
+  background-image: url(images/icons/audio.png); }
+
+#indice .unit-content .actividades .item.pearsonhe-icon-concepts .title::before {
+  background-image: url(images/icons/begrippen.png); }
+
+#indice .unit-content .actividades .item.pearsonhe-icon-attachments .title::before {
+  background-image: url(images/icons/bijlagen.png); }
+
+#indice .unit-content .actividades .item.pearsonhe-icon-cases .title::before {
+  background-image: url(images/icons/cases.png); }
+
+#indice .unit-content .actividades .item.pearsonhe-icon-checklist .title::before {
+  background-image: url(images/icons/checklist.png); }
+
+#indice .unit-content .actividades .item.pearsonhe-icon-code .title::before {
+  background-image: url(images/icons/code.png); }
+
+#indice .unit-content .actividades .item.pearsonhe-icon-teachers .title::before {
+  background-image: url(images/icons/docenten.png); }
+
+#indice .unit-content .actividades .item.pearsonhe-icon-etext .title::before {
+  background-image: url(images/icons/etext.png); }
+
+#indice .unit-content .actividades .item.pearsonhe-icon-extra .title::before {
+  background-image: url(images/icons/extra.png); }
+
+#indice .unit-content .actividades .item.pearsonhe-icon-extra2 .title::before {
+  background-image: url(images/icons/extra2.png); }
+
+#indice .unit-content .actividades .item.pearsonhe-icon-figures .title::before {
+  background-image: url(images/icons/figuren.png); }
+
+#indice .unit-content .actividades .item.pearsonhe-icon-help .title::before {
+  background-image: url(images/icons/help.png); }
+
+#indice .unit-content .actividades .item.pearsonhe-icon-links .title::before {
+  background-image: url(images/icons/links.png); }
+
+#indice .unit-content .actividades .item.pearsonhe-icon-mindmap .title::before {
+  background-image: url(images/icons/mindmap.png); }
+
+#indice .unit-content .actividades .item.pearsonhe-icon-games .title::before {
+  background-image: url(images/icons/oefenspellen.png); }
+
+#indice .unit-content .actividades .item.pearsonhe-icon-powerpoints .title::before {
+  background-image: url(images/icons/powerpoints.png); }
+
+#indice .unit-content .actividades .item.pearsonhe-icon-tests .title::before {
+  background-image: url(images/icons/toetsen.png); }
+
+#indice .unit-content .actividades .item.pearsonhe-icon-questions .title::before {
+  background-image: url(images/icons/toetsvragen.png); }
+
+#indice .unit-content .actividades .item.pearsonhe-icon-solutions .title::before {
+  background-image: url(images/icons/uitwerkingen.png); }
+
+#indice .unit-content .actividades .item.pearsonhe-icon-backinfo .title::before {
+  background-image: url(images/icons/verdieping.png); }
+
+#indice .unit-content .actividades .item.pearsonhe-icon-video .title::before {
+  background-image: url(images/icons/video.png); }
+
+#indice .unit-content .actividades .item.pearsonhe-icon-video2 .title::before {
+  background-image: url(images/icons/video2.png); }
+
+#indice .unit-content .actividades .item.pearsonhe-icon-visualbrain .title::before {
+  background-image: url(images/icons/visualbrain.png); }
+
+#indice .unit-content .actividades .item.pearsonhe-icon-self .title::before {
+  background-image: url(images/icons/zelf.png); }
+
+#indice .unit-content .actividades .item.pearsonhe-icon-noicon .title::before {
+  background-image: none; }

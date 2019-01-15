@@ -94,8 +94,9 @@ pearsonheApp.getTocInfo = function() {
 
 		var newHeader = '<div class="pearson-header"><h2 class="pearson-title">'+unitTitle+'</h2><div class="pearson-description">'+unitDescription+'</div></div>';
 
-		$('#indice .unit-content[data-id="'+unitId+'"] .content').append(newHeader)
-		$.each(unit, function(i, subunit) {
+		$('#indice .unit-content[data-id="'+unitId+'"] .content').prepend(newHeader);
+
+		$.each(unit.subunits, function(i, subunit) {
 			var subunitTag = subunit.tags,
 					subunitId = subunit.id;
 			console.log(subunitId, subunitTag);
