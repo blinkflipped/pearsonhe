@@ -92,7 +92,7 @@ pearsonheApp.getTocInfo = function() {
 				unitId = unit.id;
 		console.log(unitId, unitTitle, unitDescription);
 
-		var newHeader = '<div class="pearson-header"><h2 class="pearson-title">'+unitTitle+'</h2><div class="pearson-description">'+unitDescription+'</div></div>';
+		var newHeader = '<div class="pearson-header"><h2 class="pearson-title-1">'+unitTitle+'</h2><div class="pearson-description">'+unitDescription+'</div></div>';
 
 		$('#indice .unit-content[data-id="'+unitId+'"] .content').prepend(newHeader);
 

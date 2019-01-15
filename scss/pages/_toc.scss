@@ -44,6 +44,7 @@
     @include border-radius(0px);
     .content {
       padding: $space_1;
+      margin-top: 0;
     }
     .header {
       height: 97px;
@@ -53,15 +54,23 @@
         bottom: 0;
         left: 0;
         height: auto;
+        @include screen-reader-text();
+      }
+    }
+    .pearsonhe-header {
+      .pearsonhe-title-1 {
+        margin-bottom: $space_1;
       }
     }
     .actividades {
       border-top: 1px solid $color_3;
+      margin-top: 10px;
       .title-buttons {
         display: none;
       }
       .item {
         border-bottom: 1px solid $color_3;
+        padding: 8px 5px;
         .title {
           @include text-ui-large();
           font-weight: 600;
@@ -82,14 +91,19 @@
 
 #indice .unit-content .actividades .item.pearsonhe-icon {
   .title {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
     &::before {
       content: '';
       display: inline-block;
-      width: 50px;
-      height: 50px;
+      vertical-align: middle;
+      width: 30px;
+      height: 30px;
       background-size: contain;
       background-repeat: no-repeat;
       background-position: 0 0;
+      margin: 0 12px 0 0 ;
     }
   }
 }
@@ -102,7 +116,7 @@ $icon_image_name : animaties, audio, begrippen, bijlagen, cases, checklist, code
   #indice .unit-content .actividades .item.pearsonhe-icon-#{nth($icon_name, $i)} {
     .title {
       &::before {
-        background-image : url(images/icons/#{nth($icon_image_name, $i)}.png)
+        background-image : url('images/icons/#{nth($icon_image_name, $i)}.png')
       }
     }
   }
