@@ -50,6 +50,8 @@
   -webkit-border-radius: 0px;
   -moz-border-radius: 0px;
   border-radius: 0px; }
+  #indice .unit-content .content {
+    padding: 30px; }
   #indice .unit-content .header {
     height: 97px; }
     #indice .unit-content .header .title {
@@ -64,5 +66,20 @@
       bottom: 0;
       left: 0;
       height: auto; }
-  #indice .unit-content .actividades .title-buttons {
-    display: none; }
+  #indice .unit-content .actividades {
+    border-top: 1px solid #C7C7C7; }
+    #indice .unit-content .actividades .title-buttons {
+      display: none; }
+    #indice .unit-content .actividades .item {
+      border-bottom: 1px solid #C7C7C7; }
+      #indice .unit-content .actividades .item .title {
+        font-family: "Open Sans", sans-serif;
+        color: #252525;
+        font-size: 16px;
+        font-size: 1.6rem;
+        line-height: 1.25em;
+        font-weight: 600; }
+      #indice .unit-content .actividades .item .nota {
+        display: none; }
+      #indice .unit-content .actividades .item .pags {
+        display: none; }
