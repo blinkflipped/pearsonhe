@@ -22,6 +22,29 @@
             }
           }
         }
+        &.pearsonhe-toc-home {
+          border: 1px solid $color_4;
+          a {
+            &::before {
+              content: '';
+              width: 24px;
+              height: 24px;
+              display: inline-block;
+              vertical-align: middle;
+              background-repeat: no-repeat;
+              background-position: 0 0;
+              background-size: 24px 24px;
+              background-color: gray; // TODO ASK FOR ICON
+            }
+            .title {
+              text-transform: uppercase;
+              @include font-size(1.2);
+              line-height: 1em;
+              color: $color_4;
+            }
+          }
+        }
+
         &.active,
         body:not(.isTablet) &:hover,
         &:focus {
@@ -70,10 +93,26 @@
       }
       .item {
         border-bottom: 1px solid $color_3;
-        padding: 8px 5px;
+        padding: 7px 5px;
+        height: 44px;
         .title {
           @include text-ui-large();
           font-weight: 600;
+          &.not-homework {
+            margin-left: $space_1;
+          }
+        }
+        .icon-enviar {
+          display: inline-block;
+          vertical-align: middle;
+          width: 25px;
+          height: 25px;
+          margin-top: -14px;
+        }
+        .acceso {
+          margin-top: 5px;
+          width: 44px;
+          height: 44px;
         }
         .nota {
           display: none; // TODO Ask Blink
@@ -91,7 +130,7 @@
 
 #indice .unit-content .actividades .item.pearsonhe-icon {
   .title {
-    display: flex;
+    display: inline-flex;
     justify-content: flex-start;
     align-items: center;
     &::before {

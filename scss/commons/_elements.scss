@@ -1,6 +1,6 @@
 // Titles
 
-.pearson-title-1 {
+.pearsonhe-title-1 {
   @include page-ui-heading-small();
 }
 
@@ -17,9 +17,9 @@
           &::before {
             width: 18px;
             height: 18px;
-            background-image: url('image/pearsonhe-locks.png');
+            background-image: url('images/pearsonhe-locks.png');
             background-size: 36px 18px;
-            background-position: -36px 0;
+            background-position: -18px 0;
           }
           &.lock {
             &::before {

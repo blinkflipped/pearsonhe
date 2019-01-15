@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600");
-.pearson-title-1 {
+.pearsonhe-title-1 {
   font-family: "Open Sans", sans-serif;
   color: #252525;
   font-size: 28px;
@@ -12,9 +12,9 @@
 #indice .unit-content .material .item .acceso::before {
   width: 18px;
   height: 18px;
-  background-image: url("image/pearsonhe-locks.png");
+  background-image: url("images/pearsonhe-locks.png");
   background-size: 36px 18px;
-  background-position: -36px 0; }
+  background-position: -18px 0; }
 #indice .unit-content .actividades .item .acceso.lock::before,
 #indice .unit-content .material .item .acceso.lock::before {
   background-position: 0 0; }
@@ -59,6 +59,24 @@
       padding: 14px 12px 11px; }
   #indice .units ul li:not(.add) a .title {
     margin-left: 0px; }
+  #indice .units ul li.pearsonhe-toc-home {
+    border: 1px solid #6A7070; }
+    #indice .units ul li.pearsonhe-toc-home a::before {
+      content: '';
+      width: 24px;
+      height: 24px;
+      display: inline-block;
+      vertical-align: middle;
+      background-repeat: no-repeat;
+      background-position: 0 0;
+      background-size: 24px 24px;
+      background-color: gray; }
+    #indice .units ul li.pearsonhe-toc-home a .title {
+      text-transform: uppercase;
+      font-size: 12px;
+      font-size: 1.2rem;
+      line-height: 1em;
+      color: #6A7070; }
   #indice .units ul li.active:not(.disabled), body:not(.isTablet) #indice .units ul li:hover:not(.disabled), #indice .units ul li:focus:not(.disabled) {
     background: #047B9C; }
     #indice .units ul li.active:not(.disabled) a, body:not(.isTablet) #indice .units ul li:hover:not(.disabled) a, #indice .units ul li:focus:not(.disabled) a {
@@ -106,7 +124,8 @@
       display: none; }
     #indice .unit-content .actividades .item {
       border-bottom: 1px solid #C7C7C7;
-      padding: 8px 5px; }
+      padding: 7px 5px;
+      height: 44px; }
       #indice .unit-content .actividades .item .title {
         font-family: "Open Sans", sans-serif;
         color: #252525;
@@ -114,13 +133,25 @@
         font-size: 1.6rem;
         line-height: 1.25em;
         font-weight: 600; }
+        #indice .unit-content .actividades .item .title.not-homework {
+          margin-left: 30px; }
+      #indice .unit-content .actividades .item .icon-enviar {
+        display: inline-block;
+        vertical-align: middle;
+        width: 25px;
+        height: 25px;
+        margin-top: -14px; }
+      #indice .unit-content .actividades .item .acceso {
+        margin-top: 5px;
+        width: 44px;
+        height: 44px; }
       #indice .unit-content .actividades .item .nota {
         display: none; }
       #indice .unit-content .actividades .item .pags {
         display: none; }
 
 #indice .unit-content .actividades .item.pearsonhe-icon .title {
-  display: flex;
+  display: inline-flex;
   justify-content: flex-start;
   align-items: center; }
   #indice .unit-content .actividades .item.pearsonhe-icon .title::before {
@@ -211,3 +242,17 @@
 
 #indice .unit-content .actividades .item.pearsonhe-icon-noicon .title::before {
   background-image: none; }
+
+body.body_clase {
+  background: #F5F5F5; }
+
+#actividad .content {
+  background: #F5F5F5; }
+#actividad .carousel-inner .item-container {
+  background: #ffffff;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none; }
+
+#swipeview-slider > div {
+  background: #F5F5F5; }

@@ -1,0 +1,20 @@
+
+body.body_clase {
+  background: $background_color;
+}
+
+#actividad {
+  .content {
+    background: $background_color;
+  }
+  .carousel-inner {
+    .item-container {
+      background: $negative_color;
+      @include box-shadow(none);
+    }
+  }
+}
+
+#swipeview-slider>div {
+  background: $background_color;
+}

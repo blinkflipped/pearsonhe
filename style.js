@@ -69,6 +69,9 @@
 var pearsonheApp = window.pearsonheApp || {};
 
 pearsonheApp.courseData = '';
+pearsonheApp.tags = {
+	home : 'home'
+}
 
 pearsonheApp.getCourseData = function() {
 
@@ -89,12 +92,20 @@ pearsonheApp.getTocInfo = function() {
 	$.each(data.units, function(i, unit) {
 		var unitTitle = unit.title,
 				unitDescription = unit.description,
-				unitId = unit.id;
+				unitId = unit.id,
+				unitTag = unit.tags;
 		console.log(unitId, unitTitle, unitDescription);
 
-		var newHeader = '<div class="pearson-header"><h2 class="pearson-title-1">'+unitTitle+'</h2><div class="pearson-description">'+unitDescription+'</div></div>';
+		var newHeader = '<div class="pearson-header"><h2 class="pearsonhe-title-1">'+unitTitle+'</h2><div class="pearsonhe-description">'+unitDescription+'</div></div>';
 
-		$('#indice .unit-content[data-id="'+unitId+'"] .content').prepend(newHeader);
+		var $currentUnit = $('#indice .unit-content[data-id="'+unitId+'"]');
+		$currentUnit.find('.content').prepend(newHeader);
+
+		if (unitTag === pearsonheApp.tags.home) {
+			$currentUnit.addClass('pearsonhe-toc-home');
+			$('#list-units li[data-id="'+unitId+'"]').addClass('pearsonhe-toc-home');
+		}
+
 
 		$.each(unit.subunits, function(i, subunit) {
 			var subunitTag = subunit.tags,
