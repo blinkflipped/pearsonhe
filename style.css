@@ -58,25 +58,32 @@
     #indice .units ul li a:not(.delete) {
       padding: 14px 12px 11px; }
   #indice .units ul li:not(.add) a .title {
-    margin-left: 0px; }
+    margin-left: 0px;
+    margin-top: -26px; }
   #indice .units ul li.pearsonhe-toc-home {
-    border: 1px solid #6A7070; }
-    #indice .units ul li.pearsonhe-toc-home a::before {
-      content: '';
-      width: 24px;
-      height: 24px;
-      display: inline-block;
-      vertical-align: middle;
-      background-repeat: no-repeat;
-      background-position: 0 0;
-      background-size: 24px 24px;
-      background-color: gray; }
+    border: 1px solid #6A7070;
+    background-color: transparent; }
     #indice .units ul li.pearsonhe-toc-home a .title {
+      display: inline-flex;
+      justify-content: flex-start;
+      align-items: center;
       text-transform: uppercase;
       font-size: 12px;
       font-size: 1.2rem;
       line-height: 1em;
       color: #6A7070; }
+      #indice .units ul li.pearsonhe-toc-home a .title::before {
+        content: '';
+        width: 24px;
+        min-width: 24px;
+        height: 24px;
+        display: inline-block;
+        vertical-align: baseline;
+        background-repeat: no-repeat;
+        background-position: 0 0;
+        background-size: 24px 24px;
+        background-color: gray;
+        margin-right: 12px; }
   #indice .units ul li.active:not(.disabled), body:not(.isTablet) #indice .units ul li:hover:not(.disabled), #indice .units ul li:focus:not(.disabled) {
     background: #047B9C; }
     #indice .units ul li.active:not(.disabled) a, body:not(.isTablet) #indice .units ul li:hover:not(.disabled) a, #indice .units ul li:focus:not(.disabled) a {
@@ -143,6 +150,7 @@
         margin-top: -14px; }
       #indice .unit-content .actividades .item .acceso {
         margin-top: 5px;
+        margin-bottom: -5px;
         width: 44px;
         height: 44px; }
       #indice .unit-content .actividades .item .nota {

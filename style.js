@@ -94,7 +94,6 @@ pearsonheApp.getTocInfo = function() {
 				unitDescription = unit.description,
 				unitId = unit.id,
 				unitTag = unit.tags;
-		console.log(unitId, unitTitle, unitDescription);
 
 		var newHeader = '<div class="pearson-header"><h2 class="pearsonhe-title-1">'+unitTitle+'</h2><div class="pearsonhe-description">'+unitDescription+'</div></div>';
 
@@ -108,10 +107,12 @@ pearsonheApp.getTocInfo = function() {
 
 
 		$.each(unit.subunits, function(i, subunit) {
+
 			var subunitTag = subunit.tags,
 					subunitId = subunit.id;
-			console.log(subunitId, subunitTag);
+			if (typeof subunitTag === 'undefined') return;
 			$('#indice .unit-content .item[data-id="'+subunitId+'"]').addClass('pearsonhe-icon pearsonhe-icon-'+subunitTag);
+
 		});
 	});
 
