@@ -111,7 +111,7 @@ pearsonheApp.getTocInfo = function() {
 
 			var subunitTag = subunit.tags,
 					subunitId = subunit.id;
-			if (typeof subunitTag === 'undefined') subunitTag = self;
+			if (typeof subunitTag === 'undefined') subunitTag = 'self';
 			$('#indice .unit-content .item[data-id="'+subunitId+'"]').addClass('pearsonhe-icon pearsonhe-icon-'+subunitTag);
 
 		});
