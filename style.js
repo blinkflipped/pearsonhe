@@ -103,6 +103,7 @@ pearsonheApp.getTocInfo = function() {
 		if (unitTag === pearsonheApp.tags.home) {
 			$currentUnit.addClass('pearsonhe-toc-home');
 			$('#list-units li[data-id="'+unitId+'"]').addClass('pearsonhe-toc-home');
+			$('#indice .unit-content[data-id="'+unitId+'"]').addClass('pearsonhe-toc-home-content');
 		}
 
 
@@ -110,7 +111,7 @@ pearsonheApp.getTocInfo = function() {
 
 			var subunitTag = subunit.tags,
 					subunitId = subunit.id;
-			if (typeof subunitTag === 'undefined') return;
+			if (typeof subunitTag === 'undefined') subunitTag = self;
 			$('#indice .unit-content .item[data-id="'+subunitId+'"]').addClass('pearsonhe-icon pearsonhe-icon-'+subunitTag);
 
 		});
