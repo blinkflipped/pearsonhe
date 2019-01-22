@@ -113,7 +113,7 @@
         vertical-align: baseline;
         background-repeat: no-repeat;
         background-position: 0 0;
-        background-size: 24px 48px;
+        background-size: 48px 24px;
         background-image: url("images/pearsonhe-home.png");
         margin-right: 12px;
         margin-top: -5px; }
@@ -223,6 +223,8 @@
           top: 50%;
           left: 50%;
           transform: translate(-50%, -50%); }
+      #indice .unit-content .actividades .item .nota {
+        margin-top: 7px; }
       #indice .unit-content .actividades .item .pags {
         display: none; }
 
@@ -342,7 +344,7 @@ body.body_clase {
 .radio-option label.filter-label {
   position: relative;
   line-height: 20px;
-  padding-left: 26px; }
+  padding-left: 32px; }
   .checkbox-option label.filter-label::before,
   .slides_averages #cont_checkSelfCorrect label::before,
   .slides_averages #cont_checkEvaluation label::before,
@@ -373,6 +375,11 @@ body.body_clase {
     left: 3px;
     top: 3px; }
 
+.checkbox-option input.filter-checkbox[type="checkbox"] + label.filter-label,
+.radio-option input.filter-radio[type="radio"] + label.filter-label {
+  line-height: 20px;
+  padding-left: 32px; }
+
 .checkbox-option input.filter-checkbox[type="checkbox"]:checked + label.filter-label::before,
 .slides_averages #cont_checkSelfCorrect label::before,
 .slides_averages #cont_checkEvaluation label::before,
@@ -390,6 +397,54 @@ body.body_clase {
   margin-left: 0;
   margin-right: 20px;
   margin-top: 10px; }
+
+.checkbox-option input.filter-checkbox[type="checkbox"]:checked + label.filter-label, .checkbox-option input.filter-checkbox[type="checkbox"]:disabled + label.filter-label,
+.radio-option input.filter-radio[type="radio"]:checked + label.filter-label,
+.radio-option input.filter-radio[type="radio"]:disabled + label.filter-label {
+  cursor: default; }
+  .checkbox-option input.filter-checkbox[type="checkbox"]:checked + label.filter-label.respuesta_ok::before, .checkbox-option input.filter-checkbox[type="checkbox"]:disabled + label.filter-label.respuesta_ok::before,
+  .radio-option input.filter-radio[type="radio"]:checked + label.filter-label.respuesta_ok::before,
+  .radio-option input.filter-radio[type="radio"]:disabled + label.filter-label.respuesta_ok::before {
+    opacity: 1;
+    background-color: #038238;
+    border-color: #038238; }
+  .checkbox-option input.filter-checkbox[type="checkbox"]:checked + label.filter-label.respuesta_ko::before, .checkbox-option input.filter-checkbox[type="checkbox"]:disabled + label.filter-label.respuesta_ko::before,
+  .radio-option input.filter-radio[type="radio"]:checked + label.filter-label.respuesta_ko::before,
+  .radio-option input.filter-radio[type="radio"]:disabled + label.filter-label.respuesta_ko::before {
+    opacity: 1;
+    background-color: #DB0021;
+    border-color: #DB0021; }
+
+#actividad .workspace.test .respuesta_ok,
+#actividad .workspace.true-false .respuesta_ok {
+  border-bottom: 0;
+  color: #038238; }
+
+#actividad .workspace.test .respuesta_ko,
+#actividad .workspace.true-false .respuesta_ko {
+  border-bottom: 0;
+  color: #DB0021; }
+
+.fb_right, .fb_wrong, .fb_solucion {
+  justify-content: flex-start; }
+
+.bck-dropdown.solucion-fb-dropdown {
+  color: #047B9C;
+  border-color: #047B9C; }
+  .bck-dropdown.solucion-fb-dropdown .bck-dropdown-icon > .fa {
+    color: #047B9C; }
+
+.bck-dropdown.right-fb-dropdown {
+  color: #038238;
+  border-color: #038238; }
+  .bck-dropdown.right-fb-dropdown .bck-dropdown-icon > .fa {
+    color: #038238; }
+
+.bck-dropdown.wrong-fb-dropdown {
+  color: #DB0021;
+  border-color: #DB0021; }
+  .bck-dropdown.wrong-fb-dropdown .bck-dropdown-icon > .fa {
+    color: #DB0021; }
 
 .libro-left ul li a.book-index.active {
   background-color: #005A70; }

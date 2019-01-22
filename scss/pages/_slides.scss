@@ -32,7 +32,7 @@ body.body_clase {
 .radio-option label.filter-label {
   position: relative;
   line-height: 20px;
-  padding-left: 26px;
+  padding-left: 32px;
   &::before {
     content: '';
     background: none;
@@ -60,6 +60,14 @@ body.body_clase {
   }
 }
 
+.checkbox-option input.filter-checkbox[type="checkbox"],
+.radio-option input.filter-radio[type="radio"] {
+  &+label.filter-label {
+    line-height: 20px;
+    padding-left: 32px;
+  }
+}
+
 .checkbox-option input.filter-checkbox[type="checkbox"]:checked+label.filter-label,
 .slides_averages #cont_checkSelfCorrect label,
 .slides_averages #cont_checkEvaluation label,
@@ -74,10 +82,81 @@ body.body_clase {
   }
 }
 
+
 #actividad .workspace.true-false .tf-option {
   margin-left: 0;
   margin-right: 20px;
   margin-top: 10px;
+}
+
+.checkbox-option input.filter-checkbox[type="checkbox"],
+.radio-option input.filter-radio[type="radio"] {
+  &:checked+label.filter-label,
+  &:disabled+label.filter-label {
+    cursor: default;
+    &.respuesta_ok {
+      &::before {
+        opacity: 1;
+        background-color: $color_6;
+        border-color: $color_6;
+      }
+    }
+    &.respuesta_ko {
+      &::before {
+        opacity: 1;
+        background-color: $color_7;
+        border-color: $color_7;
+      }
+    }
+  }
+}
+
+#actividad {
+  .workspace.test,
+  .workspace.true-false {
+    .respuesta_ok {
+      border-bottom: 0;
+      color: $color_6;
+    }
+  }
+}
+#actividad {
+  .workspace.test,
+  .workspace.true-false {
+    .respuesta_ko {
+      border-bottom: 0;
+      color: $color_7;
+    }
+  }
+}
+
+
+
+// Feedback
+
+.fb_right, .fb_wrong, .fb_solucion {
+  justify-content: flex-start;
+}
+.bck-dropdown.solucion-fb-dropdown {
+  color: $color_1;
+  border-color: $color_1;
+  .bck-dropdown-icon>.fa {
+    color: $color_1;
+  }
+}
+.bck-dropdown.right-fb-dropdown {
+  color: $color_6;
+  border-color: $color_6;
+  .bck-dropdown-icon>.fa {
+    color: $color_6;
+  }
+}
+.bck-dropdown.wrong-fb-dropdown {
+  color: $color_7;
+  border-color: $color_7;
+  .bck-dropdown-icon>.fa {
+    color: $color_7;
+  }
 }
 
 // Index
