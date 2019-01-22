@@ -28,7 +28,7 @@
           background-color: transparent;
           a {
             &:not(.delete) {
-              padding-top: 7px;
+              padding-top: 12px;
               padding-bottom: 7px;
               line-height: 1em;
             }
@@ -39,6 +39,7 @@
               text-transform: uppercase;
               @include font-size(1.2);
               line-height: 1em;
+              font-weight: 600;
               color: $color_4;
               margin: 0;
               &::before {
@@ -50,9 +51,10 @@
                 vertical-align: baseline;
                 background-repeat: no-repeat;
                 background-position: 0 0;
-                background-size: 24px 24px;
-                background-color: gray; // TODO ASK FOR ICON
+                background-size: 24px 48px;
+                background-image: url('images/pearsonhe-home.png');
                 margin-right: 12px;
+                margin-top: -5px;
               }
             }
           }
@@ -72,6 +74,23 @@
             }
           }
         }
+
+        &.pearsonhe-toc-home {
+          &.active,
+          body:not(.isTablet) &:hover,
+          &:focus {
+            color: $negative_color;
+            background-color: $color_4;
+            .title {
+              color: $negative_color;
+              &::before {
+                background-position: -24px 0;
+              }
+            }
+          }
+        }
+
+
       }
     }
   }
@@ -106,30 +125,63 @@
       }
       .item {
         border-bottom: 1px solid $color_3;
-        padding: 7px 5px;
-        height: 44px;
+        padding: 0;
+        min-height: $space_2;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .js-title {
+          display: inline-block;
+          flex-grow: 2;
+        }
         .title {
           @include text-ui-large();
           font-weight: 600;
+          padding: 6px 0 4px;
+
           &.not-homework {
-            margin-left: $space_1;
+            margin-left: $space_2;
           }
         }
+
         .icon-enviar {
           display: inline-block;
           vertical-align: middle;
-          width: 25px;
-          height: 25px;
-          margin-top: -14px;
+          width: $space_2;
+          min-width: $space_2;
+          height: $space_2;
+          margin: 0;
+          position: relative;
+          img {
+            margin: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            width: 25px;
+            height: 25px;
+          }
         }
         .acceso {
-          margin-top: 5px;
-          margin-bottom: -5px;
-          width: 44px;
-          height: 44px;
+          margin-top: 0;
+          margin-bottom: 0;
+          width: $space_2;
+          min-width: $space_2;
+          height: $space_2;
         }
-        .nota {
-          display: none; // TODO Ask Blink
+        .online {
+          margin-top: 0;
+          margin-bottom: 0;
+          width: $space_2;
+          min-width: $space_2;
+          height: $space_2;
+          position: relative;
+          .fa {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+          }
         }
         .pags {
           display: none;
@@ -158,11 +210,12 @@
       display: inline-block;
       vertical-align: middle;
       width: 30px;
+      min-width: 30px;
       height: 30px;
       background-size: contain;
       background-repeat: no-repeat;
       background-position: 0 0;
-      margin: 0 12px 0 0 ;
+      margin: 0 12px 0 0;
     }
   }
 }

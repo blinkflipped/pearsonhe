@@ -13,8 +13,132 @@ body.body_clase {
       @include box-shadow(none);
     }
   }
+  .class_slide {
+    .review {
+      text-align: left;
+    }
+  }
 }
 
 #swipeview-slider>div {
   background: $background_color;
+}
+
+// Checkbox and radiobuttons in slides
+
+.checkbox-option label.filter-label,
+.slides_averages #cont_checkSelfCorrect label,
+.slides_averages #cont_checkEvaluation label,
+.radio-option label.filter-label {
+  position: relative;
+  line-height: 20px;
+  padding-left: 26px;
+  &::before {
+    content: '';
+    background: none;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid $color_4;
+    border-radius: 2px;
+    background: $negative_color;
+  }
+  &::after {
+    content: "\f00c";
+    display: inline-block;
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    opacity: 0;
+    color: $negative_color;
+    position: absolute;
+    left: 3px;
+    top: 3px;
+  }
+}
+
+.checkbox-option input.filter-checkbox[type="checkbox"]:checked+label.filter-label,
+.slides_averages #cont_checkSelfCorrect label,
+.slides_averages #cont_checkEvaluation label,
+.radio-option input.filter-radio[type="radio"]:checked+label.filter-label {
+  &::before {
+    background-color: $color_1;
+    color: $negative_color;
+    border-color: $color_1;
+  }
+  &::after {
+    opacity: 1;
+  }
+}
+
+#actividad .workspace.true-false .tf-option {
+  margin-left: 0;
+  margin-right: 20px;
+  margin-top: 10px;
+}
+
+// Index
+
+.libro-left ul li a.book-index.active {
+  background-color: $color_5;
+}
+
+#book-index {
+  .col-indice {
+    background: $color_5;
+  }
+  .col-main {
+    background: $color_1;
+  }
+  #indice .units {
+    ul {
+      li {
+        a {
+          .title {
+            @include text-ui-large();
+            color: $color_2;
+            font-weight: 400;
+          }
+          &:not(.delete) {
+            color: $color_2;
+          }
+        }
+      }
+    }
+  }
+
+  #indice .unit-content {
+    .actividades {
+      .item {
+        opacity: 1;
+        .title {
+          @include text-ui-large();
+          color: $color_2;
+          font-weight: 400;
+        }
+        &.current {
+          .title {
+            color: $color_5;
+          }
+        }
+      }
+    }
+  }
+  body:not(.isTablet) & #indice .units ul li:not(.disabled) a:hover,
+  #indice .units ul li.active a {
+    background: $color_1;
+  }
+  body:not(.isTablet) & #indice .units ul {
+    li:not(.disabled) a:hover,
+    li.active:not(.disabled) a {
+      .title {
+        color: $color_2;
+        font-weight: normal;
+      }
+
+    }
+  }
 }

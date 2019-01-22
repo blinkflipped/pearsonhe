@@ -44,12 +44,16 @@
     .material {
       .item {
         .acceso {
+          position: relative;
           &::before {
             width: 18px;
             height: 18px;
             background-image: url('images/pearsonhe-locks.png');
             background-size: 36px 18px;
             background-position: -18px 0;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
           }
           &.lock {
             &::before {
