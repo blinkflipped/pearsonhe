@@ -43,7 +43,9 @@
     .actividades,
     .material {
       .item {
-        .acceso {
+
+        .acceso,
+        .acceso.editorial, {
           position: relative;
           &::before {
             width: 18px;
@@ -55,6 +57,7 @@
             left: 50%;
             transform: translate(-50%,-50%);
           }
+          &.editorial.lock,
           &.lock {
             &::before {
               background-position: 0 0;

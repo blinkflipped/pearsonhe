@@ -224,7 +224,8 @@
 }
 
 $icon_name : animations, audio, concepts, attachments, cases, checklist, code, teachers, etext, extra, extra2, figures, help, links, mindmap, games, powerpoints, tests, questions, solutions, backinfo, video, video2, visualbrain, self;
-$icon_image_name : animaties, audio, begrippen, bijlagen, cases, checklist, code, docenten, etext, extra, extra2, figuren, help, links, mindmap, oefenspellen, powerpoints, toetsen, toetsvragen, uitwerkingen, verdieping, video, video2, visualbrain, zelf;
+$icon_image_name : animations, audio, concepts, attachments, cases, checklist, code, teachers, etext, extra, extra2, figures, help, links, mindmap, games, powerpoints, tests, questions, solutions, backinfo, video, video2, visualbrain, self;
+//$icon_image_name : animaties, audio, begrippen, bijlagen, cases, checklist, code, docenten, etext, extra, extra2, figuren, help, links, mindmap, oefenspellen, powerpoints, toetsen, toetsvragen, uitwerkingen, verdieping, video, video2, visualbrain, zelf;
 
 @for $i from 1 through length($icon_name) {
 
