@@ -65,9 +65,13 @@
           }
         }
         .acceso.editorial {
-          background-position: -54px 0;
+            &::before {
+              background-position: -54px 0;
+            }
           &.editorial.lock {
-            background-position: -36px 0;
+              &::before {
+                background-position: -36px 0;
+              }
           }
         }
       }

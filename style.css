@@ -58,12 +58,12 @@
   #indice .unit-content .material .item .acceso.editorial.editorial.lock::before,
   #indice .unit-content .material .item .acceso.editorial.lock::before {
     background-position: 0 0; }
-#indice .unit-content .actividades .item .acceso.editorial,
-#indice .unit-content .material .item .acceso.editorial {
+#indice .unit-content .actividades .item .acceso.editorial::before,
+#indice .unit-content .material .item .acceso.editorial::before {
   background-position: -54px 0; }
-  #indice .unit-content .actividades .item .acceso.editorial.editorial.lock,
-  #indice .unit-content .material .item .acceso.editorial.editorial.lock {
-    background-position: -36px 0; }
+#indice .unit-content .actividades .item .acceso.editorial.editorial.lock::before,
+#indice .unit-content .material .item .acceso.editorial.editorial.lock::before {
+  background-position: -36px 0; }
 
 .body_curso {
   position: relative;
