@@ -71,7 +71,7 @@ var pearsonheApp = window.pearsonheApp || {};
 pearsonheApp.courseData = '';
 pearsonheApp.tags = {
 	home : 'home',
-	unithead : 'unit-head'
+	unithead : 'unit_head'
 }
 
 pearsonheApp.getCourseData = function() {
