@@ -100,6 +100,8 @@ pearsonheApp.getTocInfo = function() {
 		var $currentUnit = $('#indice .unit-content[data-id="'+unitId+'"]');
 		$currentUnit.find('.content').prepend(newHeader);
 
+		console.log(unitTagsArray);
+
 		if (unitTagsArray.length) {
 			if (unitTagsArray.indexOf(pearsonheApp.tags.home) >= 0 ) {
 				$currentUnit.addClass('pearsonhe-toc-home');

@@ -5,6 +5,9 @@
         @include border-radius(0px);
         background: $color_2;
         margin: 0;
+        max-height: 0;
+        transition: max-height .3s linear;
+        overflow: hidden;
         a {
           color: $color_1;
           .title {
@@ -23,9 +26,15 @@
             }
           }
         }
+
+        &.pearsonhe-toc-subunit-active {
+          max-height: 200px;
+        }
+
         &.pearsonhe-toc-home {
           border: 1px solid $color_4;
           background-color: transparent;
+          max-height: none!important;
           a {
             &:not(.delete) {
               padding-top: 12px;
@@ -61,6 +70,7 @@
         }
         &.pearsonhe-toc-unithead {
           margin-top: 10px;
+          max-height: none!important;
           a {
             .title {
               @include text-ui-large();

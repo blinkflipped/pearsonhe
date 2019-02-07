@@ -91,7 +91,10 @@
   -moz-border-radius: 0px;
   border-radius: 0px;
   background: #DAF0ED;
-  margin: 0; }
+  margin: 0;
+  max-height: 0;
+  transition: max-height .3s linear;
+  overflow: hidden; }
   #indice .units ul li a {
     color: #047B9C; }
     #indice .units ul li a .title {
@@ -106,9 +109,12 @@
   #indice .units ul li:not(.add) a .title {
     margin-left: 0px;
     margin-top: -26px; }
+  #indice .units ul li.pearsonhe-toc-subunit-active {
+    max-height: 200px; }
   #indice .units ul li.pearsonhe-toc-home {
     border: 1px solid #6A7070;
-    background-color: transparent; }
+    background-color: transparent;
+    max-height: none !important; }
     #indice .units ul li.pearsonhe-toc-home a:not(.delete) {
       padding-top: 12px;
       padding-bottom: 7px;
@@ -138,7 +144,8 @@
         margin-right: 12px;
         margin-top: -5px; }
   #indice .units ul li.pearsonhe-toc-unithead {
-    margin-top: 10px; }
+    margin-top: 10px;
+    max-height: none !important; }
     #indice .units ul li.pearsonhe-toc-unithead a .title {
       font-family: "Open Sans", sans-serif;
       color: #252525;
