@@ -6,7 +6,7 @@
         background: $color_2;
         margin: 0;
         max-height: 0;
-        transition: max-height .3s linear;
+        transition: all .5s linear;
         overflow: hidden;
         a {
           color: $color_1;
@@ -28,7 +28,7 @@
         }
 
         &.pearsonhe-toc-subunit-active {
-          max-height: 200px;
+          max-height: 100px;
         }
 
         &.pearsonhe-toc-home {
