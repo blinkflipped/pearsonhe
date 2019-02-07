@@ -159,7 +159,7 @@ pearsonheApp.getTocInfo = function() {
 	var $current = $('#list-units .litema.active');
 	$current.nextUntil('.pearsonhe-toc-unithead', 'li').addClass('pearsonhe-toc-subunit-active');
 
-	if (!$currentUnit.hasClass('pearsonhe-toc-unithead')){
+	if (!$current.hasClass('pearsonhe-toc-unithead')){
 		$current.prevUntil('.pearsonhe-toc-unithead', 'li').addClass('pearsonhe-toc-subunit-active');
 	}
 }
