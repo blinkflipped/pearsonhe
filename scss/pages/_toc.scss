@@ -37,9 +37,8 @@
           max-height: none!important;
           a {
             &:not(.delete) {
-              padding-top: 12px;
-              padding-bottom: 7px;
               line-height: 1em;
+              padding: 12px 12px 7px;
             }
             .title {
               display: inline-flex;

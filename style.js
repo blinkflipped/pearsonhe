@@ -108,7 +108,8 @@ pearsonheApp.getTocInfo = function() {
 				$('#list-units li[data-id="'+unitId+'"]').addClass('pearsonhe-toc-home');
 				$('#indice .unit-content[data-id="'+unitId+'"]').addClass('pearsonhe-toc-home-content');
 			}
-
+			console.log(unitTagsArray.indexOf(pearsonheApp.tags.unithead));
+			console.log(pearsonheApp.tags.unithead);
 			if (unitTagsArray.indexOf(pearsonheApp.tags.unithead) >= 0 ) {
 				console.log("Is unit head");
 				$('#list-units li[data-id="'+unitId+'"]').addClass('pearsonhe-toc-unithead');
