@@ -70,7 +70,8 @@ var pearsonheApp = window.pearsonheApp || {};
 
 pearsonheApp.courseData = '';
 pearsonheApp.tags = {
-	home : 'home'
+	home : 'home',
+	unithead : 'unit-head'
 }
 
 pearsonheApp.getCourseData = function() {
@@ -85,25 +86,31 @@ pearsonheApp.getCourseData = function() {
 
 pearsonheApp.getTocInfo = function() {
 
-	console.log(pearsonheApp.courseData);
-
 	var data = pearsonheApp.courseData;
 
 	$.each(data.units, function(i, unit) {
 		var unitTitle = unit.title,
 				unitDescription = unit.description,
 				unitId = unit.id,
-				unitTag = unit.tags;
+				unitTags = unit.tags,
+				unitTagsArray = (typeof unitTags !== 'undefined') ? unitTags.split(" ") : [];
 
 		var newHeader = '<div class="pearson-header"><h2 class="pearsonhe-title-1">'+unitTitle+'</h2><div class="pearsonhe-description">'+unitDescription+'</div></div>';
 
 		var $currentUnit = $('#indice .unit-content[data-id="'+unitId+'"]');
 		$currentUnit.find('.content').prepend(newHeader);
 
-		if (unitTag === pearsonheApp.tags.home) {
-			$currentUnit.addClass('pearsonhe-toc-home');
-			$('#list-units li[data-id="'+unitId+'"]').addClass('pearsonhe-toc-home');
-			$('#indice .unit-content[data-id="'+unitId+'"]').addClass('pearsonhe-toc-home-content');
+		if (unitTagsArray.length) {
+			if (unitTagsArray.indexOf(pearsonheApp.tags.home) >= 0 ) {
+				$currentUnit.addClass('pearsonhe-toc-home');
+				$('#list-units li[data-id="'+unitId+'"]').addClass('pearsonhe-toc-home');
+				$('#indice .unit-content[data-id="'+unitId+'"]').addClass('pearsonhe-toc-home-content');
+			}
+
+			if (unitTagsArray.indexOf(pearsonheApp.tags.unithead) >= 0 ) {
+				console.log("Is unit head");
+				$('#list-units li[data-id="'+unitId+'"]').addClass('pearsonhe-toc-unithead');
+			}
 		}
 
 

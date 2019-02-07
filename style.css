@@ -90,19 +90,19 @@
   -webkit-border-radius: 0px;
   -moz-border-radius: 0px;
   border-radius: 0px;
-  background: #DAF0ED; }
+  background: #DAF0ED;
+  margin: 0; }
   #indice .units ul li a {
     color: #047B9C; }
     #indice .units ul li a .title {
       font-family: "Open Sans", sans-serif;
       color: #252525;
-      font-size: 16px;
-      font-size: 1.6rem;
-      line-height: 1.25em;
-      color: #047B9C;
-      font-weight: 400; }
+      font-size: 12px;
+      font-size: 1.2rem;
+      line-height: 1.3333333333em;
+      color: #047B9C; }
     #indice .units ul li a:not(.delete) {
-      padding: 14px 12px 11px; }
+      padding: 6px 10px 6px 30px; }
   #indice .units ul li:not(.add) a .title {
     margin-left: 0px;
     margin-top: -26px; }
@@ -137,6 +137,18 @@
         background-image: url("images/pearsonhe-home.png");
         margin-right: 12px;
         margin-top: -5px; }
+  #indice .units ul li.pearsonhe-toc-unithead {
+    margin-top: 10px; }
+    #indice .units ul li.pearsonhe-toc-unithead a .title {
+      font-family: "Open Sans", sans-serif;
+      color: #252525;
+      font-size: 16px;
+      font-size: 1.6rem;
+      line-height: 1.25em;
+      color: #047B9C;
+      font-weight: 400; }
+    #indice .units ul li.pearsonhe-toc-unithead a:not(.delete) {
+      padding: 14px 12px 11px; }
   #indice .units ul li.active:not(.disabled), body:not(.isTablet) #indice .units ul li:hover:not(.disabled), #indice .units ul li:focus:not(.disabled) {
     background: #047B9C; }
     #indice .units ul li.active:not(.disabled) a, body:not(.isTablet) #indice .units ul li:hover:not(.disabled) a, #indice .units ul li:focus:not(.disabled) a {

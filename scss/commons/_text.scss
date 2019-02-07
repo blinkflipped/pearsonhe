@@ -15,6 +15,11 @@
   @include font-size(1.6);
   line-height: (20em/16)
 }
+@mixin text-ui-small() {
+  @include text--base();
+  @include font-size(1.2);
+  line-height: (16em/12)
+}
 
 
 @mixin page-ui-heading-small() {

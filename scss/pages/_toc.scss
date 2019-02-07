@@ -4,15 +4,15 @@
       li {
         @include border-radius(0px);
         background: $color_2;
+        margin: 0;
         a {
           color: $color_1;
           .title {
-            @include text-ui-large();
+            @include text-ui-small();
             color: $color_1;
-            font-weight: 400;
           }
           &:not(.delete) {
-            padding: 14px 12px 11px;
+            padding: 6px 10px 6px 30px;
           }
         }
         &:not(.add) {
@@ -59,7 +59,19 @@
             }
           }
         }
-
+        &.pearsonhe-toc-unithead {
+          margin-top: 10px;
+          a {
+            .title {
+              @include text-ui-large();
+              color: $color_1;
+              font-weight: 400;
+            }
+            &:not(.delete) {
+              padding: 14px 12px 11px;
+            }
+          }
+        }
         &.active,
         body:not(.isTablet) &:hover,
         &:focus {
