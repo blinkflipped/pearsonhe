@@ -55,6 +55,7 @@
       // Remove Info
       blink.events.on('indexLoaded', function(){
         console.log("Index loaded");
+				pearsonheApp.customBookIndex();
       });
 
 })( blink );
@@ -74,12 +75,41 @@ pearsonheApp.tags = {
 	unithead : 'unit_head'
 }
 
+pearsonheApp.text = {
+  menu : 'Menu'
+}
+
 pearsonheApp.getCourseData = function() {
 
 	loadJSON(function(json) {
 		console.log(json);
 		pearsonheApp.courseData = json;
 		pearsonheApp.init();
+	});
+
+}
+
+pearsonheApp.customBookIndex = function() {
+
+	var data = pearsonheApp.courseData;
+
+	var newBookIndexHeader = '<div class="pearsonhe-bookindex-header"><h2 class="pearsonhe-title">'+pearsonheApp.text.menu+'</h2></div>';
+	$('#book-index .col-units').prepend(newBookIndexHeader);
+
+	$.each(data.units, function(i, unit) {
+		var unitId = unit.id,
+				unitTags = unit.tags,
+				unitTagsArray = (typeof unitTags !== 'undefined') ? unitTags.split(" ") : [];
+
+		if (unitTagsArray.length) {
+			if (unitTagsArray.indexOf(pearsonheApp.tags.home) >= 0 ) {
+				$('#list-units li[data-id="'+unitId+'"]').hide();
+			}
+
+			if (unitTagsArray.indexOf(pearsonheApp.tags.unithead) >= 0 ) {
+				$('#list-units li[data-id="'+unitId+'"]').addClass('pearsonhe-toc-unithead');
+			}
+		}
 	});
 
 }
@@ -102,13 +132,11 @@ pearsonheApp.getTocInfo = function() {
 
 		if (unitTagsArray.length) {
 			if (unitTagsArray.indexOf(pearsonheApp.tags.home) >= 0 ) {
-				$currentUnit.addClass('pearsonhe-toc-home');
+				$currentUnit.addClass('pearsonhe-toc-home pearsonhe-toc-home-content');
 				$('#list-units li[data-id="'+unitId+'"]').addClass('pearsonhe-toc-home');
-				$('#indice .unit-content[data-id="'+unitId+'"]').addClass('pearsonhe-toc-home-content');
 			}
 
 			if (unitTagsArray.indexOf(pearsonheApp.tags.unithead) >= 0 ) {
-				$currentUnit.addClass('pearsonhe-toc-unithead');
 				$('#list-units li[data-id="'+unitId+'"]').addClass('pearsonhe-toc-unithead');
 			}
 		}
