@@ -94,7 +94,7 @@ pearsonheApp.customBookIndex = function() {
 	var data = pearsonheApp.courseData;
 
 	var newBookIndexHeader = '<div class="pearsonhe-bookindex-header"><h2 class="pearsonhe-title-1">'+pearsonheApp.text.menu+'</h2></div>';
-	var headerExists = $('#book-index #wrapper pearsonhe-bookindex-header').length;
+	var headerExists = $('#book-index #wrapper .pearsonhe-bookindex-header').length;
 
 	if (!headerExists) $('#book-index #wrapper').prepend(newBookIndexHeader);
 
@@ -113,6 +113,9 @@ pearsonheApp.customBookIndex = function() {
 			}
 		}
 	});
+
+	var $currentParent = $('#book-index .current-parent');
+	$currentParent.prev('.pearsonhe-toc-unithead').click();
 
 }
 

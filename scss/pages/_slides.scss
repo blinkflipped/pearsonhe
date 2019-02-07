@@ -172,6 +172,10 @@ body.body_clase {
   .col-main {
     background: $color_1;
   }
+  .pearsonhe-title-1 {
+    padding: 0 15px;
+    color: $color_2;
+  }
   #indice .units {
     ul {
       li {
@@ -183,6 +187,7 @@ body.body_clase {
           }
           &:not(.delete) {
             color: $color_2;
+            padding: 10px 30px 10px 30px;
           }
         }
         &.pearsonhe-toc-unithead {
@@ -191,6 +196,9 @@ body.body_clase {
               @include text-ui-large();
               color: $color_2;
               font-weight: 400;
+            }
+            &:not(.delete) {
+              padding-left: 15px;
             }
           }
 
