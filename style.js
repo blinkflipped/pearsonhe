@@ -93,8 +93,10 @@ pearsonheApp.customBookIndex = function() {
 
 	var data = pearsonheApp.courseData;
 
-	var newBookIndexHeader = '<div class="pearsonhe-bookindex-header"><h2 class="pearsonhe-title">'+pearsonheApp.text.menu+'</h2></div>';
-	$('#book-index .col-units').prepend(newBookIndexHeader);
+	var newBookIndexHeader = '<div class="pearsonhe-bookindex-header"><h2 class="pearsonhe-title-1">'+pearsonheApp.text.menu+'</h2></div>';
+	var headerExists = $('#book-index #wrapper pearsonhe-bookindex-header').length;
+
+	if (!headerExists) $('#book-index #wrapper').prepend(newBookIndexHeader);
 
 	$.each(data.units, function(i, unit) {
 		var unitId = unit.id,

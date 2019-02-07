@@ -494,13 +494,21 @@ body.body_clase {
 #book-index #indice .units ul li a .title {
   font-family: "Open Sans", sans-serif;
   color: #252525;
+  font-size: 12px;
+  font-size: 1.2rem;
+  line-height: 1.3333333333em;
+  color: #DAF0ED;
+  font-weight: 400; }
+#book-index #indice .units ul li a:not(.delete) {
+  color: #DAF0ED; }
+#book-index #indice .units ul li.pearsonhe-toc-unithead a .title {
+  font-family: "Open Sans", sans-serif;
+  color: #252525;
   font-size: 16px;
   font-size: 1.6rem;
   line-height: 1.25em;
   color: #DAF0ED;
   font-weight: 400; }
-#book-index #indice .units ul li a:not(.delete) {
-  color: #DAF0ED; }
 #book-index #indice .unit-content .actividades .item {
   opacity: 1; }
   #book-index #indice .unit-content .actividades .item .title {

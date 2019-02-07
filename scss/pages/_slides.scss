@@ -177,13 +177,23 @@ body.body_clase {
       li {
         a {
           .title {
-            @include text-ui-large();
+            @include text-ui-small();
             color: $color_2;
             font-weight: 400;
           }
           &:not(.delete) {
             color: $color_2;
           }
+        }
+        &.pearsonhe-toc-unithead {
+          a {
+            .title {
+              @include text-ui-large();
+              color: $color_2;
+              font-weight: 400;
+            }
+          }
+
         }
       }
     }
