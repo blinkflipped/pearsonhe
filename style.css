@@ -45,7 +45,7 @@
     width: 18px;
     height: 18px;
     background-image: url("images/pearsonhe-locks.png");
-    background-size: 36px 18px;
+    background-size: 72px 18px;
     background-position: -18px 0;
     top: 50%;
     left: 50%;
@@ -58,6 +58,12 @@
   #indice .unit-content .material .item .acceso.editorial.editorial.lock::before,
   #indice .unit-content .material .item .acceso.editorial.lock::before {
     background-position: 0 0; }
+#indice .unit-content .actividades .item .acceso.editorial,
+#indice .unit-content .material .item .acceso.editorial {
+  background-position: -54px 0; }
+  #indice .unit-content .actividades .item .acceso.editorial.editorial.lock,
+  #indice .unit-content .material .item .acceso.editorial.editorial.lock {
+    background-position: -36px 0; }
 
 .body_curso {
   position: relative;
