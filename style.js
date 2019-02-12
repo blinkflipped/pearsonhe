@@ -197,18 +197,18 @@ $(document).ready(function() {
 
 
 	$('body').on('click', '#list-units .js-indice-tema', function() {
-		$(this).siblings('li').removeClass('pearsonhe-toc-active').end().addClass('pearsonhe-toc-active');
 		if (!$(this).hasClass('pearsonhe-toc-unithead')) {
 			$(this).siblings('li').removeClass('pearsonhe-toc-unithead-ancestor');
 			$(this).prevAll('li.pearsonhe-toc-unithead').first().addClass('pearsonhe-toc-unithead-ancestor');
+		} else {
+			var $sublevels = $(this).nextUntil('.pearsonhe-toc-unithead', 'li');
+			if ($(this).hasClass('pearsonhe-toc-active')) {
+				$sublevels.toggleClass('pearsonhe-toc-subunit-active');
+			} else {
+				$sublevels.addClass('pearsonhe-toc-subunit-active');
+			}
 		}
-	});
-
-	$('body').on('click', '.pearsonhe-toc-unithead', function() {
-		var $sublevels = $(this).nextUntil('.pearsonhe-toc-unithead', 'li');
-		if ($(this).hasClass('pearsonhe-toc-active')) {
-			$sublevels.toggleClass('pearsonhe-toc-subunit-active');
-		}
+		$(this).siblings('li').removeClass('pearsonhe-toc-active').end().addClass('pearsonhe-toc-active');
 	});
 
 });
