@@ -69,19 +69,41 @@
         }
         &.pearsonhe-toc-unithead {
           margin-top: 10px;
+          margin-bottom: 10px;
           max-height: none!important;
           a {
             .title {
               @include text-ui-large();
               color: $color_1;
               font-weight: 400;
+              position: relative;
+              &::before {
+                content: '';
+                display: block;
+                position: absolute;
+                right: 0;
+                top: 0;
+                background: url('images/pearsonhe-dropdowns.png') 0 0 no-repeat;
+                background-size: 36px 18px;
+              }
             }
             &:not(.delete) {
               padding: 14px 12px 11px;
             }
           }
+
+          &_empty {
+            a {
+              .title {
+                &::before {
+                  content: none;
+                }
+              }
+            }
+          }
         }
-        &.active,
+        &.pearsonhe-toc-active,
+        //&.active,
         body:not(.isTablet) &:hover,
         &:focus {
           &:not(.disabled) {

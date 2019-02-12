@@ -144,6 +144,7 @@
         margin-top: -5px; }
   #indice .units ul li.pearsonhe-toc-unithead {
     margin-top: 10px;
+    margin-bottom: 10px;
     max-height: none !important; }
     #indice .units ul li.pearsonhe-toc-unithead a .title {
       font-family: "Open Sans", sans-serif;
@@ -152,14 +153,25 @@
       font-size: 1.6rem;
       line-height: 1.25em;
       color: #047B9C;
-      font-weight: 400; }
+      font-weight: 400;
+      position: relative; }
+      #indice .units ul li.pearsonhe-toc-unithead a .title::before {
+        content: '';
+        display: block;
+        position: absolute;
+        right: 0;
+        top: 0;
+        background: url("images/pearsonhe-dropdowns.png") 0 0 no-repeat;
+        background-size: 36px 18px; }
     #indice .units ul li.pearsonhe-toc-unithead a:not(.delete) {
       padding: 14px 12px 11px; }
-  #indice .units ul li.active:not(.disabled), body:not(.isTablet) #indice .units ul li:hover:not(.disabled), #indice .units ul li:focus:not(.disabled) {
+    #indice .units ul li.pearsonhe-toc-unithead_empty a .title::before {
+      content: none; }
+  #indice .units ul li.pearsonhe-toc-active:not(.disabled), body:not(.isTablet) #indice .units ul li:hover:not(.disabled), #indice .units ul li:focus:not(.disabled) {
     background: #047B9C; }
-    #indice .units ul li.active:not(.disabled) a, body:not(.isTablet) #indice .units ul li:hover:not(.disabled) a, #indice .units ul li:focus:not(.disabled) a {
+    #indice .units ul li.pearsonhe-toc-active:not(.disabled) a, body:not(.isTablet) #indice .units ul li:hover:not(.disabled) a, #indice .units ul li:focus:not(.disabled) a {
       color: #DAF0ED; }
-      #indice .units ul li.active:not(.disabled) a .title, body:not(.isTablet) #indice .units ul li:hover:not(.disabled) a .title, #indice .units ul li:focus:not(.disabled) a .title {
+      #indice .units ul li.pearsonhe-toc-active:not(.disabled) a .title, body:not(.isTablet) #indice .units ul li:hover:not(.disabled) a .title, #indice .units ul li:focus:not(.disabled) a .title {
         color: #DAF0ED;
         font-weight: 600; }
   #indice .units ul li.pearsonhe-toc-home.active, body:not(.isTablet) #indice .units ul li.pearsonhe-toc-home:hover, #indice .units ul li.pearsonhe-toc-home:focus {
