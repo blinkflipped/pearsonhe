@@ -115,7 +115,7 @@ pearsonheApp.customBookIndex = function() {
 	});
 
 	$('#list-units li.pearsonhe-toc-unithead.disabled').each(function(i,e) {
-		if ($(e).nextAll('li').first().hasClass('pearsonhe-toc-unithead')) {
+		if ($(e).nextAll('li').first().hasClass('pearsonhe-toc-unithead') && !$(e).nextAll('li').length) {
 			$(e).addClass('pearsonhe-toc-unithead_empty');
 		} else {
 			$(e).removeClass('disabled locked').addClass('pearsonhe-toc-disabled');
@@ -220,7 +220,7 @@ $(document).ready(function() {
 		$(this).siblings('li').removeClass('pearsonhe-toc-active').end().addClass('pearsonhe-toc-active');
 	});
 
-	$('body').on('click', 'pearsonhe-toc-disabled', function() {
+	$('body').on('click', '.pearsonhe-toc-disabled', function() {
 		$('#book-index .col-main').css('left', '0');
 	});
 

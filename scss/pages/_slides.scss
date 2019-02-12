@@ -191,6 +191,14 @@ body.body_clase {
             padding: 10px 30px 10px 30px;
           }
         }
+        &.current-parent {
+          a {
+            &:not(.delete),
+            .title {
+              color: $negative_color;
+            }
+          }
+        }
         &.pearsonhe-toc-unithead {
           a {
             .title {
