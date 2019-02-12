@@ -86,7 +86,7 @@
   max-width: 1000px;
   margin: 0 auto; }
 
-#indice .units ul li, #indice .units ul li.active {
+#indice .units ul li, #indice .units ul li.active:not(.disabled) {
   -webkit-border-radius: 0px;
   -moz-border-radius: 0px;
   border-radius: 0px;
@@ -95,18 +95,18 @@
   max-height: 0;
   transition: all .5s linear;
   overflow: hidden; }
-  #indice .units ul li a, #indice .units ul li.active a {
+  #indice .units ul li a, #indice .units ul li.active:not(.disabled) a {
     color: #047B9C; }
-    #indice .units ul li a .title, #indice .units ul li.active a .title {
+    #indice .units ul li a .title, #indice .units ul li.active:not(.disabled) a .title {
       font-family: "Open Sans", sans-serif;
       color: #252525;
       font-size: 12px;
       font-size: 1.2rem;
       line-height: 1.3333333333em;
       color: #047B9C; }
-    #indice .units ul li a:not(.delete), #indice .units ul li.active a:not(.delete) {
-      padding: 6px 10px 6px 30px; }
-  #indice .units ul li:not(.add) a .title, #indice .units ul li.active:not(.add) a .title {
+    #indice .units ul li a:not(.delete), #indice .units ul li.active:not(.disabled) a:not(.delete) {
+      padding: 8px 10px 4px 30px; }
+  #indice .units ul li:not(.add) a .title, #indice .units ul li.active:not(.disabled):not(.add) a .title {
     margin-left: 0px;
     margin-top: -26px; }
 #indice .units ul li.pearsonhe-toc-subunit-active {
@@ -169,8 +169,12 @@
     padding: 14px 12px 11px; }
   #indice .units ul li.pearsonhe-toc-unithead_empty a .title::before {
     content: none; }
+#indice .units ul li.pearsonhe-toc-active a .title::before {
+  background-position: -18px 0px; }
 #indice .units ul li.pearsonhe-toc-unithead-ancestor a .title::before {
-  background-position: -18px 0; }
+  background-position: -18px -18px; }
+#indice .units ul li.pearsonhe-toc-unithead-ancestor.pearsonhe-toc-active a .title::before {
+  background-position: -18px 0px; }
 #indice .units ul li.pearsonhe-toc-active:not(.disabled), body:not(.isTablet) #indice .units ul li:hover:not(.disabled), #indice .units ul li:focus:not(.disabled) {
   background: #047B9C; }
   #indice .units ul li.pearsonhe-toc-active:not(.disabled) a, body:not(.isTablet) #indice .units ul li:hover:not(.disabled) a, #indice .units ul li:focus:not(.disabled) a {
