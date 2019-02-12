@@ -122,7 +122,7 @@ pearsonheApp.customBookIndex = function() {
 	});
 
 	if (!$('#list-units li.pearsonhe-toc-unithead').length) {
-		$('#list-units li').addClass('pearsonhe-toc-subunit-active');
+		$('#list-units li').addClass('pearsonhe-toc-subunit-active pearsonhe-toc-subunit-woparent');
 	}
 	if ($('#list-units li.pearsonhe-toc-unithead').first().prevAll('li:not(.pearsonhe-toc-home)').length) {
 		$('#list-units li.pearsonhe-toc-unithead').first().prevAll('li:not(.pearsonhe-toc-home)').addClass('pearsonhe-toc-subunit-active pearsonhe-toc-subunit-woparent');
@@ -186,7 +186,7 @@ pearsonheApp.getTocInfo = function() {
 	}
 
 	if (!$('#list-units li.pearsonhe-toc-unithead').length) {
-		$('#list-units li').addClass('pearsonhe-toc-subunit-active');
+		$('#list-units li').addClass('pearsonhe-toc-subunit-active pearsonhe-toc-subunit-woparent');
 	}
 	if ($('#list-units li.pearsonhe-toc-unithead').first().prevAll('li:not(.pearsonhe-toc-home)').length) {
 		$('#list-units li.pearsonhe-toc-unithead').first().prevAll('li:not(.pearsonhe-toc-home)').addClass('pearsonhe-toc-subunit-active pearsonhe-toc-subunit-woparent');

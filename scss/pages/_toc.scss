@@ -78,8 +78,10 @@
           }
         }
         &.pearsonhe-toc-subunit-woparent {
-          &:not(.delete) {
-            padding-left: 12px;
+          a {
+            &:not(.delete) {
+              padding-left: 12px;
+            }
           }
         }
         &.pearsonhe-toc-unithead {
