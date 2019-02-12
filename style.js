@@ -115,7 +115,7 @@ pearsonheApp.customBookIndex = function() {
 	});
 
 	$('#list-units li.pearsonhe-toc-unithead.disabled').each(function(i,e) {
-		if ($(e).nextAll('li').first().hasClass('pearsonhe-toc-unithead') && !$(e).nextAll('li').length) {
+		if ($(e).nextAll('li').first().hasClass('pearsonhe-toc-unithead') || !$(e).nextAll('li').length) {
 			$(e).addClass('pearsonhe-toc-unithead_empty');
 		} else {
 			$(e).removeClass('disabled locked').addClass('pearsonhe-toc-disabled');
