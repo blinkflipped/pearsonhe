@@ -149,6 +149,8 @@
         background-image: url("images/pearsonhe-home.png");
         margin-right: 12px;
         margin-top: -5px; }
+  #indice .units ul li.pearsonhe-toc-subunit-woparent:not(.delete) {
+    padding-left: 12px; }
   #indice .units ul li.pearsonhe-toc-unithead {
     margin-top: 10px;
     max-height: none !important; }

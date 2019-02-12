@@ -77,6 +77,11 @@
             }
           }
         }
+        &.pearsonhe-toc-subunit-woparent {
+          &:not(.delete) {
+            padding-left: 12px;
+          }
+        }
         &.pearsonhe-toc-unithead {
           margin-top: 10px;
           max-height: none!important;
