@@ -187,7 +187,9 @@ pearsonheApp.getTocInfo = function() {
 	$current.addClass('pearsonhe-toc-active').nextUntil('.pearsonhe-toc-unithead', 'li').addClass('pearsonhe-toc-subunit-active');
 
 	if (!$current.hasClass('pearsonhe-toc-unithead')){
-		$current.addClass('pearsonhe-toc-subunit-active').prevUntil('.pearsonhe-toc-unithead', 'li').addClass('pearsonhe-toc-subunit-active');
+		$current.addClass('pearsonhe-toc-subunit-active').prevUntil('.pearsonhe-toc-unithead', 'li').addClass('pearsonhe-toc-subunit-active').prevAll('.pearsonhe-toc-unithead').first().addClass('pearsonhe-toc-unithead-ancestor');
+	} else {
+		$current.addClass('pearsonhe-toc-unithead-ancestor');
 	}
 
 	if (!$('#list-units li.pearsonhe-toc-unithead').length) {
