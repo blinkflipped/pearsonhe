@@ -54,7 +54,6 @@
 
       // Remove Info
       blink.events.on('indexLoaded', function(){
-        console.log("Index loaded");
 				pearsonheApp.customBookIndex();
       });
 
@@ -121,6 +120,13 @@ pearsonheApp.customBookIndex = function() {
 			$(e).removeClass('disabled locked').addClass('pearsonhe-toc-disabled');
 		}
 	});
+
+	if (!$('#list-units li.pearsonhe-toc-unithead').length) {
+		$('#list-units li').addClass('pearsonhe-toc-subunit-active');
+	}
+	if ($('#list-units li.pearsonhe-toc-unithead').first().prevAll('li:not(.pearsonhe-toc-home)').length) {
+		$('#list-units li.pearsonhe-toc-unithead').first().prevAll('li:not(.pearsonhe-toc-home)').addClass('pearsonhe-toc-subunit-active');
+	}
 
 	var $currentParent = $('#book-index .current-parent');
 	$currentParent.prev('.pearsonhe-toc-unithead').click();
@@ -205,7 +211,7 @@ $(document).ready(function() {
 
 
 	$('body').on('click', '#list-units .js-indice-tema', function() {
-		console.log("A");
+
 		if (!$(this).hasClass('pearsonhe-toc-unithead')) {
 			$(this).siblings('li').removeClass('pearsonhe-toc-unithead-ancestor');
 			$(this).prevAll('li.pearsonhe-toc-unithead').first().addClass('pearsonhe-toc-unithead-ancestor');

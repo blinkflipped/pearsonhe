@@ -198,6 +198,9 @@ body.body_clase {
         }
         &.current-parent {
           a {
+            &:not(.delete) {
+              background: $color_1;
+            }
             &:not(.delete),
             .title {
               color: $negative_color;
