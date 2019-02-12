@@ -2,30 +2,37 @@
   .units {
     ul {
       li {
-        &,
-        &.active:not(.disabled) {
-          @include border-radius(0px);
+        @include border-radius(0px);
+        background: $color_2;
+        margin: 0;
+        max-height: 0;
+        transition: all .5s linear;
+        overflow: hidden;
+        a {
+          color: $color_1;
+          .title {
+            @include text-ui-small();
+            color: $color_1;
+          }
+          &:not(.delete) {
+            padding: 8px 10px 4px 30px;
+          }
+        }
+        &:not(.add) {
+          a {
+            .title {
+              margin-left: 0px;
+              margin-top: -26px;
+            }
+          }
+        }
+
+        body:not(.isTablet) &.active:not(.disabled):not(.pearsonhe-toc-active) {
           background: $color_2;
-          margin: 0;
-          max-height: 0;
-          transition: all .5s linear;
-          overflow: hidden;
           a {
             color: $color_1;
             .title {
-              @include text-ui-small();
               color: $color_1;
-            }
-            &:not(.delete) {
-              padding: 8px 10px 4px 30px;
-            }
-          }
-          &:not(.add) {
-            a {
-              .title {
-                margin-left: 0px;
-                margin-top: -26px;
-              }
             }
           }
         }
@@ -102,15 +109,6 @@
                 &::before {
                   content: none;
                 }
-              }
-            }
-          }
-        }
-        &.pearsonhe-toc-active {
-          a {
-            .title {
-              &::before {
-                background-position: -18px 0px;
               }
             }
           }

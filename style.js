@@ -206,7 +206,9 @@ $(document).ready(function() {
 
 	$('body').on('click', '.pearsonhe-toc-unithead', function() {
 		var $sublevels = $(this).nextUntil('.pearsonhe-toc-unithead', 'li');
-		$sublevels.toggleClass('pearsonhe-toc-subunit-active');
+		if ($(this).hasClass('pearsonhe-toc-active')) {
+			$sublevels.toggleClass('pearsonhe-toc-subunit-active');
+		}
 	});
 
 });
