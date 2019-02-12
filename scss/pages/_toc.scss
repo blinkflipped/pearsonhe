@@ -2,31 +2,33 @@
   .units {
     ul {
       li {
-        @include border-radius(0px);
-        background: $color_2;
-        margin: 0;
-        max-height: 0;
-        transition: all .5s linear;
-        overflow: hidden;
-        a {
-          color: $color_1;
-          .title {
-            @include text-ui-small();
-            color: $color_1;
-          }
-          &:not(.delete) {
-            padding: 6px 10px 6px 30px;
-          }
-        }
-        &:not(.add) {
+        &,
+        &.active {
+          @include border-radius(0px);
+          background: $color_2;
+          margin: 0;
+          max-height: 0;
+          transition: all .5s linear;
+          overflow: hidden;
           a {
+            color: $color_1;
             .title {
-              margin-left: 0px;
-              margin-top: -26px;
+              @include text-ui-small();
+              color: $color_1;
+            }
+            &:not(.delete) {
+              padding: 6px 10px 6px 30px;
+            }
+          }
+          &:not(.add) {
+            a {
+              .title {
+                margin-left: 0px;
+                margin-top: -26px;
+              }
             }
           }
         }
-
         &.pearsonhe-toc-subunit-active {
           max-height: 100px;
         }

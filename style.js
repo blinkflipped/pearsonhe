@@ -165,7 +165,7 @@ pearsonheApp.getTocInfo = function() {
 	});
 
 	var $current = $('#list-units .litema.active');
-	$current.nextUntil('.pearsonhe-toc-unithead', 'li').addClass('pearsonhe-toc-subunit-active');
+	$current.addClass('pearsonhe-toc-active').nextUntil('.pearsonhe-toc-unithead', 'li').addClass('pearsonhe-toc-subunit-active');
 
 	if (!$current.hasClass('pearsonhe-toc-unithead')){
 		$current.addClass('pearsonhe-toc-subunit-active').prevUntil('.pearsonhe-toc-unithead', 'li').addClass('pearsonhe-toc-subunit-active');
