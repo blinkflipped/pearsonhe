@@ -519,6 +519,10 @@ body.body_clase {
   background: #005A70; }
 #book-index .col-main {
   background: #047B9C; }
+  #book-index .col-main.pearsonhe-hidden {
+    left: 0 !important;
+    opacity: 0;
+    pointer-events: none; }
 #book-index .pearsonhe-title-1 {
   padding: 0 15px;
   color: #DAF0ED; }

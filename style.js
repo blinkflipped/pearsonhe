@@ -217,11 +217,14 @@ $(document).ready(function() {
 				$sublevels.addClass('pearsonhe-toc-subunit-active');
 			}
 		}
+		if ($(this).hasClass('pearsonhe-toc-disabled')) {
+			$('#book-index .col-main').addClass('pearsonhe-hidden');
+		} else {
+			$('#book-index .col-main').removeClass('pearsonhe-hidden');
+
+		}
 		$(this).siblings('li').removeClass('pearsonhe-toc-active').end().addClass('pearsonhe-toc-active');
 	});
 
-	$('body').on('click', '.pearsonhe-toc-disabled', function() {
-		$('#book-index .col-main').css('left', '0');
-	});
 
 });
