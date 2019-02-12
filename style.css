@@ -523,6 +523,8 @@ body.body_clase {
     left: 0 !important;
     opacity: 0;
     pointer-events: none; }
+#book-index .pearsonhe-bookindex-header {
+  margin-bottom: 10px; }
 #book-index .pearsonhe-title-1 {
   padding: 0 15px;
   color: #DAF0ED; }
