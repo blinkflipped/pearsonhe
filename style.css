@@ -542,6 +542,8 @@ body.body_clase {
 #book-index #indice .units ul li a:not(.delete) {
   color: #DAF0ED;
   padding: 10px 30px 10px 30px; }
+#book-index #indice .units ul li.pearsonhe-toc-subunit-woparent a:not(.delete) {
+  padding-left: 15px; }
 #book-index #indice .units ul li.current-parent a:not(.delete) {
   background: #047B9C; }
 #book-index #indice .units ul li.current-parent a:not(.delete),

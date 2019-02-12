@@ -199,6 +199,13 @@ body.body_clase {
             padding: 10px 30px 10px 30px;
           }
         }
+        &.pearsonhe-toc-subunit-woparent {
+          a {
+            &:not(.delete) {
+              padding-left: 15px;
+            }
+          }
+        }
         &.current-parent {
           a {
             &:not(.delete) {

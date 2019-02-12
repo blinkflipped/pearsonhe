@@ -129,7 +129,12 @@ pearsonheApp.customBookIndex = function() {
 	}
 
 	var $currentParent = $('#book-index .current-parent');
-	$currentParent.prev('.pearsonhe-toc-unithead').click();
+	if (!$currentParent.hasClass('pearsonhe-toc-unithead')) {
+		$currentParent.addClass('pearsonhe-toc-subunit-active').prevUntil('.pearsonhe-toc-unithead', 'li').addClass('pearsonhe-toc-subunit-active');
+	} else {
+		$currentParent.addClass('pearsonhe-toc-active').nextUntil('.pearsonhe-toc-unithead', 'li').addClass('pearsonhe-toc-subunit-active');
+	}
+
 
 }
 
