@@ -145,10 +145,10 @@ pearsonheApp.getTocInfo = function() {
 
 			if (unitTagsArray.indexOf(pearsonheApp.tags.unithead) >= 0 ) {
 				$currentListUnit.addClass('pearsonhe-toc-unithead');
-				if ($currentListUnit.prev('li').hasClass('pearsonhe-toc-unithead')) {
-					$currentListUnit.prev('li').addClass('pearsonhe-toc-unithead_empty');
+				if ($currentListUnit.prevAll('li').first().hasClass('pearsonhe-toc-unithead')) {
+					$currentListUnit.prevAll('li').first().addClass('pearsonhe-toc-unithead_empty');
 				}
-				if (!$currentListUnit.next('li').length) {
+				if (!$currentListUnit.nextAll('li').length) {
 					$currentListUnit.addClass('pearsonhe-toc-unithead_empty');
 				}
 			}

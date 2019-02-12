@@ -37,6 +37,7 @@
           border: 1px solid $color_4;
           background-color: transparent;
           max-height: none!important;
+          margin-bottom: 10px;
           a {
             &:not(.delete) {
               line-height: 1em;
@@ -71,7 +72,6 @@
         }
         &.pearsonhe-toc-unithead {
           margin-top: 10px;
-          margin-bottom: 10px;
           max-height: none!important;
           a {
             .title {
@@ -87,6 +87,8 @@
                 top: 0;
                 background: url('images/pearsonhe-dropdowns.png') 0 0 no-repeat;
                 background-size: 36px 18px;
+                width: 18px;
+                height: 18px;
               }
             }
             &:not(.delete) {
