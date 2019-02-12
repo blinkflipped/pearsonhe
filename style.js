@@ -114,6 +114,14 @@ pearsonheApp.customBookIndex = function() {
 		}
 	});
 
+	$('#list-units li.pearsonhe-toc-unithead.disabled').each(function(i,e) {
+		if ($(e).nextAll('li').first().hasClass('pearsonhe-toc-unithead')) {
+			$(e).addClass('pearsonhe-toc-unithead_empty');
+		} else {
+			$(e).removeClass('disabled locked').addClass('pearsonhe-toc-disabled');
+		}
+	});
+
 	var $currentParent = $('#book-index .current-parent');
 	$currentParent.prev('.pearsonhe-toc-unithead').click();
 
@@ -210,6 +218,10 @@ $(document).ready(function() {
 			}
 		}
 		$(this).siblings('li').removeClass('pearsonhe-toc-active').end().addClass('pearsonhe-toc-active');
+	});
+
+	$('body').on('click', 'pearsonhe-toc-disabled', function() {
+		$('#book-index .col-main').css('left', '0');
 	});
 
 });
