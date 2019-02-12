@@ -170,6 +170,13 @@ pearsonheApp.getTocInfo = function() {
 	if (!$current.hasClass('pearsonhe-toc-unithead')){
 		$current.addClass('pearsonhe-toc-subunit-active').prevUntil('.pearsonhe-toc-unithead', 'li').addClass('pearsonhe-toc-subunit-active');
 	}
+
+	if (!$('#list-units li.pearsonhe-toc-unithead').length) {
+		$('#list-units li').addClass('pearsonhe-toc-subunit-active');
+	}
+	if ($('#list-units li.pearsonhe-toc-unithead').first().prevAll('li:not(.pearsonhe-toc-home)').length) {
+		$('#list-units li.pearsonhe-toc-unithead').first().prevAll('li:not(.pearsonhe-toc-home)').addClass('pearsonhe-toc-subunit-active');
+	}
 }
 
 
@@ -191,6 +198,10 @@ $(document).ready(function() {
 
 	$('body').on('click', '#list-units .js-indice-tema', function() {
 		$(this).siblings('li').removeClass('pearsonhe-toc-active').end().addClass('pearsonhe-toc-active');
+		if (!$(this).hasClass('pearsonhe-toc-unithead')) {
+			$(this).siblings('li').removeClass('pearsonhe-toc-unithead-ancestor');
+			$(this).prevAll('li.pearsonhe-toc-unithead').first().addClass('pearsonhe-toc-unithead-ancestor');
+		}
 	});
 
 	$('body').on('click', '.pearsonhe-toc-unithead', function() {

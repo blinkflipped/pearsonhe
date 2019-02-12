@@ -86,7 +86,7 @@
                 right: 0;
                 top: 0;
                 background: url('images/pearsonhe-dropdowns.png') 0 0 no-repeat;
-                background-size: 36px 18px;
+                background-size: 36px 36px;
                 width: 18px;
                 height: 18px;
               }
@@ -106,6 +106,15 @@
             }
           }
         }
+        &.pearsonhe-toc-unithead-ancestor {
+          a {
+            .title {
+              &::before {
+                background-position: -18px 0;
+              }
+            }
+          }
+        }
         &.pearsonhe-toc-active,
         //&.active,
         body:not(.isTablet) &:hover,
@@ -117,6 +126,9 @@
               .title {
                 color: $color_2;
                 font-weight: 600;
+                &::before {
+                  background-position: 0 -18px;
+                }
               }
             }
           }
