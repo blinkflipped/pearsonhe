@@ -150,6 +150,18 @@
           }
         }
 
+
+        &.pearsonhe-toc-unithead.pearsonhe-toc-unithead-ancestor:hover,
+        &.pearsonhe-toc-unithead.pearsonhe-toc-active {
+          a {
+            .title {
+              &::before {
+                background-position: -18px 0px!important;
+              }
+            }
+          }
+        }
+
         &.pearsonhe-toc-home {
           &.active,
           body:not(.isTablet) &:hover,
@@ -159,7 +171,7 @@
             .title {
               color: $negative_color;
               &::before {
-                background-position: -24px 0;
+                background-position: -24px 0!important;
               }
             }
           }

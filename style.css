@@ -188,13 +188,15 @@
         font-weight: 600; }
         #indice .units ul li.pearsonhe-toc-active:not(.disabled) a .title::before, body:not(.isTablet) #indice .units ul li:hover:not(.disabled) a .title::before, #indice .units ul li:focus:not(.disabled) a .title::before {
           background-position: 0 -18px; }
+  #indice .units ul li.pearsonhe-toc-unithead.pearsonhe-toc-unithead-ancestor:hover a .title::before, #indice .units ul li.pearsonhe-toc-unithead.pearsonhe-toc-active a .title::before {
+    background-position: -18px 0px !important; }
   #indice .units ul li.pearsonhe-toc-home.active, body:not(.isTablet) #indice .units ul li.pearsonhe-toc-home:hover, #indice .units ul li.pearsonhe-toc-home:focus {
     color: #ffffff;
     background-color: #6A7070; }
     #indice .units ul li.pearsonhe-toc-home.active .title, body:not(.isTablet) #indice .units ul li.pearsonhe-toc-home:hover .title, #indice .units ul li.pearsonhe-toc-home:focus .title {
       color: #ffffff; }
       #indice .units ul li.pearsonhe-toc-home.active .title::before, body:not(.isTablet) #indice .units ul li.pearsonhe-toc-home:hover .title::before, #indice .units ul li.pearsonhe-toc-home:focus .title::before {
-        background-position: -24px 0; }
+        background-position: -24px 0 !important; }
 #indice .unit-content {
   -webkit-border-radius: 0px;
   -moz-border-radius: 0px;
@@ -527,7 +529,8 @@ body.body_clase {
   font-size: 1.2rem;
   line-height: 1.3333333333em;
   color: #DAF0ED;
-  font-weight: 400; }
+  font-weight: 400;
+  flex-grow: 2; }
 #book-index #indice .units ul li a:not(.delete) {
   color: #DAF0ED;
   padding: 10px 30px 10px 30px; }

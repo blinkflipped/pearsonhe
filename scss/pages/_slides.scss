@@ -184,6 +184,7 @@ body.body_clase {
             @include text-ui-small();
             color: $color_2;
             font-weight: 400;
+            flex-grow: 2;
           }
           &:not(.delete) {
             color: $color_2;

@@ -197,6 +197,7 @@ $(document).ready(function() {
 
 
 	$('body').on('click', '#list-units .js-indice-tema', function() {
+		console.log("A");
 		if (!$(this).hasClass('pearsonhe-toc-unithead')) {
 			$(this).siblings('li').removeClass('pearsonhe-toc-unithead-ancestor');
 			$(this).prevAll('li.pearsonhe-toc-unithead').first().addClass('pearsonhe-toc-unithead-ancestor');
