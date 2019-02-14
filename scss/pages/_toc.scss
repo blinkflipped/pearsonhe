@@ -141,7 +141,8 @@
         }
 
 
-        &.pearsonhe-toc-unithead.pearsonhe-toc-unithead-ancestor:hover {
+        body:not(.isTablet) &.pearsonhe-toc-unithead.pearsonhe-toc-unithead-ancestor:hover,
+        &.pearsonhe-toc-unithead.pearsonhe-toc-unithead-ancestor:focus {
           a {
             .title {
               &::before {

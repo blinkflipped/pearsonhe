@@ -186,7 +186,7 @@
         font-weight: 600; }
         #indice .units ul li.pearsonhe-toc-active:not(.disabled) a .title::before, body:not(.isTablet) #indice .units ul li:hover:not(.disabled) a .title::before, #indice .units ul li:focus:not(.disabled) a .title::before {
           background-position: 0 -18px; }
-  #indice .units ul li.pearsonhe-toc-unithead.pearsonhe-toc-unithead-ancestor:hover a .title::before {
+  body:not(.isTablet) #indice .units ul li.pearsonhe-toc-unithead.pearsonhe-toc-unithead-ancestor:hover a .title::before, #indice .units ul li.pearsonhe-toc-unithead.pearsonhe-toc-unithead-ancestor:focus a .title::before {
     background-position: -18px 0px; }
   #indice .units ul li.pearsonhe-toc-unithead-ancestor a .title::before {
     background-position: -18px -18px; }

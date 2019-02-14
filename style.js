@@ -232,6 +232,7 @@ $(document).ready(function() {
 				}
 				$sublevels.toggleClass('pearsonhe-toc-subunit-active');
 			} else {
+				$(this).addClass('pearsonhe-toc-unithead-ancestor');
 				$sublevels.addClass('pearsonhe-toc-subunit-active');
 			}
 		}
