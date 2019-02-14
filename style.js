@@ -102,13 +102,22 @@ pearsonheApp.customBookIndex = function() {
 				unitTags = unit.tags,
 				unitTagsArray = (typeof unitTags !== 'undefined') ? unitTags.split(" ") : [];
 
+
+		var $listUnitsItem = $('#list-units li[data-id="'+unitId+'"]');
+
 		if (unitTagsArray.length) {
 			if (unitTagsArray.indexOf(pearsonheApp.tags.home) >= 0 ) {
-				$('#list-units li[data-id="'+unitId+'"]').hide();
+				$listUnitsItem.hide();
 			}
 
 			if (unitTagsArray.indexOf(pearsonheApp.tags.unithead) >= 0 ) {
-				$('#list-units li[data-id="'+unitId+'"]').addClass('pearsonhe-toc-unithead');
+				$listUnitsItem.addClass('pearsonhe-toc-unithead');
+				if ($listUnitsItem.prevAll('li').first().hasClass('pearsonhe-toc-unithead')) {
+					$listUnitsItem.prevAll('li').first().addClass('pearsonhe-toc-unithead_empty');
+				}
+				if (!$listUnitsItem.nextAll('li').length) {
+					$listUnitsItem.addClass('pearsonhe-toc-unithead_empty');
+				}
 			}
 		}
 	});
@@ -210,8 +219,6 @@ pearsonheApp.init = function() {
 }
 
 
-
-
 $(document).ready(function() {
 
 	pearsonheApp.getCourseData();
@@ -220,7 +227,6 @@ $(document).ready(function() {
 	$('body').on('click', '#list-units .js-indice-tema', function() {
 
 		if (!$(this).hasClass('pearsonhe-toc-unithead')) {
-			//$(this).siblings('li').removeClass('pearsonhe-toc-unithead-ancestor');
 			$(this).prevAll('li.pearsonhe-toc-unithead').first().addClass('pearsonhe-toc-unithead-ancestor');
 		} else {
 			var $sublevels = $(this).nextUntil('.pearsonhe-toc-unithead', 'li');
