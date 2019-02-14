@@ -6,7 +6,7 @@
         background: $color_2;
         margin: 0;
         max-height: 0;
-        transition: all .5s linear;
+        transition: all .25s linear;
         overflow: hidden;
         a {
           color: $color_1;
@@ -120,24 +120,7 @@
             }
           }
         }
-        &.pearsonhe-toc-unithead-ancestor {
-          a {
-            .title {
-              &::before {
-                background-position: -18px -18px;
-              }
-            }
-          }
-          &.pearsonhe-toc-active {
-            a {
-              .title {
-                &::before {
-                  background-position: -18px 0px;
-                }
-              }
-            }
-          }
-        }
+
         &.pearsonhe-toc-active,
         //&.active,
         body:not(.isTablet) &:hover,
@@ -158,17 +141,33 @@
         }
 
 
-        &.pearsonhe-toc-unithead.pearsonhe-toc-unithead-ancestor:hover,
-        &.pearsonhe-toc-unithead.pearsonhe-toc-active {
+        &.pearsonhe-toc-unithead.pearsonhe-toc-unithead-ancestor:hover {
           a {
             .title {
               &::before {
-                background-position: -18px 0px!important;
+                background-position: -18px 0px;
               }
             }
           }
         }
-
+        &.pearsonhe-toc-unithead-ancestor {
+          a {
+            .title {
+              &::before {
+                background-position: -18px -18px;
+              }
+            }
+          }
+          &.pearsonhe-toc-active {
+            a {
+              .title {
+                &::before {
+                  background-position: -18px 0px;
+                }
+              }
+            }
+          }
+        }
         &.pearsonhe-toc-home {
           &.active,
           body:not(.isTablet) &:hover,

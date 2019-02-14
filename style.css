@@ -93,7 +93,7 @@
   background: #DAF0ED;
   margin: 0;
   max-height: 0;
-  transition: all .5s linear;
+  transition: all .25s linear;
   overflow: hidden; }
   #indice .units ul li a {
     color: #047B9C; }
@@ -177,10 +177,6 @@
       padding: 14px 12px 11px; }
     #indice .units ul li.pearsonhe-toc-unithead_empty a .title::before {
       content: none; }
-  #indice .units ul li.pearsonhe-toc-unithead-ancestor a .title::before {
-    background-position: -18px -18px; }
-  #indice .units ul li.pearsonhe-toc-unithead-ancestor.pearsonhe-toc-active a .title::before {
-    background-position: -18px 0px; }
   #indice .units ul li.pearsonhe-toc-active:not(.disabled), body:not(.isTablet) #indice .units ul li:hover:not(.disabled), #indice .units ul li:focus:not(.disabled) {
     background: #047B9C; }
     #indice .units ul li.pearsonhe-toc-active:not(.disabled) a, body:not(.isTablet) #indice .units ul li:hover:not(.disabled) a, #indice .units ul li:focus:not(.disabled) a {
@@ -190,8 +186,12 @@
         font-weight: 600; }
         #indice .units ul li.pearsonhe-toc-active:not(.disabled) a .title::before, body:not(.isTablet) #indice .units ul li:hover:not(.disabled) a .title::before, #indice .units ul li:focus:not(.disabled) a .title::before {
           background-position: 0 -18px; }
-  #indice .units ul li.pearsonhe-toc-unithead.pearsonhe-toc-unithead-ancestor:hover a .title::before, #indice .units ul li.pearsonhe-toc-unithead.pearsonhe-toc-active a .title::before {
-    background-position: -18px 0px !important; }
+  #indice .units ul li.pearsonhe-toc-unithead.pearsonhe-toc-unithead-ancestor:hover a .title::before {
+    background-position: -18px 0px; }
+  #indice .units ul li.pearsonhe-toc-unithead-ancestor a .title::before {
+    background-position: -18px -18px; }
+  #indice .units ul li.pearsonhe-toc-unithead-ancestor.pearsonhe-toc-active a .title::before {
+    background-position: -18px 0px; }
   #indice .units ul li.pearsonhe-toc-home.active, body:not(.isTablet) #indice .units ul li.pearsonhe-toc-home:hover, #indice .units ul li.pearsonhe-toc-home:focus {
     color: #ffffff;
     background-color: #6A7070; }

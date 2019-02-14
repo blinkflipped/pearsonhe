@@ -225,6 +225,11 @@ $(document).ready(function() {
 		} else {
 			var $sublevels = $(this).nextUntil('.pearsonhe-toc-unithead', 'li');
 			if ($(this).hasClass('pearsonhe-toc-active')) {
+				if ($sublevels.first().hasClass('pearsonhe-toc-subunit-active')) {
+					$(this).removeClass('pearsonhe-toc-unithead-ancestor');
+				} else {
+					$(this).addClass('pearsonhe-toc-unithead-ancestor');
+				}
 				$sublevels.toggleClass('pearsonhe-toc-subunit-active');
 			} else {
 				$sublevels.addClass('pearsonhe-toc-subunit-active');
