@@ -220,7 +220,7 @@ $(document).ready(function() {
 	$('body').on('click', '#list-units .js-indice-tema', function() {
 
 		if (!$(this).hasClass('pearsonhe-toc-unithead')) {
-			$(this).siblings('li').removeClass('pearsonhe-toc-unithead-ancestor');
+			//$(this).siblings('li').removeClass('pearsonhe-toc-unithead-ancestor');
 			$(this).prevAll('li.pearsonhe-toc-unithead').first().addClass('pearsonhe-toc-unithead-ancestor');
 		} else {
 			var $sublevels = $(this).nextUntil('.pearsonhe-toc-unithead', 'li');
