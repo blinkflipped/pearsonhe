@@ -1,0 +1,61 @@
+
+/*Listado de unidades*/
+
+#indice .units ul li {
+    background: #DAF0ED;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    margin-bottom: 8px;
+    padding: 8px 16px;
+}
+
+#indice .units ul li a .title {
+    font-size: 1.6rem;
+    line-height: 1.25em;
+    color: #047B9C;
+    font-weight: 400;
+}
+
+#indice .units ul li.active:not(.disabled), 
+body:not(.isTablet) #indice .units ul li:hover:not(.disabled), 
+#indice .units ul li:focus:not(.disabled) {
+    background: #047B9C;
+}
+
+body:not(.isTablet) #indice .units ul li:not(.disabled) a:hover .title, 
+body:not(.isTablet) #indice .units ul li.active:not(.disabled) a .title {
+    color: #fff;
+    font-weight: 600;
+}
+
+/*Crear tema*/
+
+#indice .units ul li.add, #indice .units ul li.add:focus, 
+#indice .units ul li.add:hover {
+    background: #c9eaf3 repeat-y -1px;
+}
+
+#indice .units ul li.add .title, 
+#indice .units ul li.add .title:hover {
+    color: #047B9C;
+}
+
+.plusBlink {
+    background-color: #047B9C;
+}
+
+/*Crear actividad*/
+
+#indice .unit-content .actividades .add, 
+#indice .unit-content .material .add {
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    background: #c9eaf3 repeat-y -1px;
+}
+
+#indice .unit-content .actividades .add .title, 
+#indice .unit-content .material .add .title {
+    color: #047B9C;
+}
