@@ -7,7 +7,11 @@
     -moz-border-radius: 0px;
     border-radius: 0px;
     margin-bottom: 8px;
-    padding: 8px 16px;
+    padding: 4px 16px 4px 0px;
+}
+
+#indice .units ul li a.delete {
+    margin: 0px -12px 0 0;
 }
 
 #indice .units ul li a .title {
