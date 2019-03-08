@@ -64,3 +64,19 @@ body:not(.isTablet) #indice .units ul li.active:not(.disabled) a .title {
 a:hover, a:active, a:focus {
     color: #047B9C;
 }
+
+#indice .drag-over {
+    border-top-color: #047a9c;
+    border-right-color: #047a9c;
+    border-bottom-color: #047a9c;
+    border-left-color: #047a9c;
+    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.075) inset, 0 0 8px #047a9c4d;
+    -moz-box-shadow: 0 1px 1px rgba(0,0,0,0.075) inset,0 0 8px #047a9c4d;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.075) inset, 0 0 8px #047a9c4d;
+}
+
+#indice .units ul li.drag-over {
+    -webkit-box-shadow: 0 0 0 rgba(0,0,0,0.075) inset, 0 0 20px #047B9C;
+    -moz-box-shadow: 0 0 0 rgba(0,0,0,0.075) inset,0 0 20px #047B9C;
+    box-shadow: 0 0 0 rgba(0,0,0,0.075) inset, 0 0 20px #047B9C;
+}
