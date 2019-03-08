@@ -59,3 +59,8 @@ body:not(.isTablet) #indice .units ul li.active:not(.disabled) a .title {
 #indice .unit-content .material .add .title {
     color: #047B9C;
 }
+
+/*Listado actividades*/
+a:hover, a:active, a:focus {
+    color: #047B9C;
+}
