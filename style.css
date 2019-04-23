@@ -296,7 +296,9 @@
       #indice .unit-content .actividades .item .nota {
         margin-top: 7px; }
       #indice .unit-content .actividades .item .pags {
-        display: none; }
+        display: inline-block;
+        float: none;
+        margin-top: 10px; }
 
 #indice .unit-content .actividades .item.pearsonhe-icon .title {
   display: inline-flex;
