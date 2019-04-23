@@ -11,7 +11,7 @@
 		parent: blink.theme.styles.pearsonhe.prototype,
 		bodyClassName: 'content_type_clase_pearsonhedev',
 		ckEditorStyles: {
-			name: 'pearsonhe-dev',
+			name: 'Pearsonhe-dev',
 			styles: [
 				{ name: 'Title 1', element: 'h4', attributes: { 'class': 'bck-title1'} },
 				{ name: 'Title 2', element: 'h4', attributes: { 'class': 'bck-title2'} },
@@ -111,7 +111,6 @@ pearsonheApp.text = {
 pearsonheApp.getCourseData = function() {
 
 	loadJSON(function(json) {
-		console.log(json);
 		pearsonheApp.courseData = json;
 		pearsonheApp.init();
 	});

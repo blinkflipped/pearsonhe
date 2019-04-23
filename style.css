@@ -416,6 +416,9 @@
 #indice .unit-content .actividades .add a.icon-entregable-add::before,
 #indice .unit-content .material .add a.icon-entregable-add::before {
   background-image: url(images/icons-editmode/icon-homework.png); }
+#indice .unit-content .actividades .add a.icon-merge-add::before,
+#indice .unit-content .material .add a.icon-merge-add::before {
+  background-image: url(images/icons-editmode/icon-merge.png); }
 
 #indice .unit-content .material .item .imagen.actividad::before {
   background-image: url(images/bg/bg01.jpg); }
@@ -427,6 +430,10 @@
   background-image: url(images/bg/bg03.jpg); }
 #indice .unit-content .material .item .imagen.libro::before {
   background-image: url(images/bg/bg04.jpg); }
+
+a.icon-wikipedia-add:before,
+.navbar .recursos .filter a.icon-wiki-add:before {
+  background-image: url(images/icons-edistmode/icon-wikipedia.png); }
 
 body.body_clase {
   background: #F5F5F5; }
