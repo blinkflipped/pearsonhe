@@ -47,7 +47,7 @@
           margin-bottom: 10px;
           a {
             &:not(.delete) {
-              line-height: 1em;
+              line-height: 0px; //1em
               padding: 12px 12px 7px;
             }
             .title {
@@ -132,6 +132,7 @@
               .title {
                 color: $color_2;
                 font-weight: 600;
+                line-height: 16px;
                 &::before {
                   background-position: 0 -18px;
                 }
@@ -336,6 +337,65 @@ $icon_image_name : animations, audio, concepts, attachments, cases, checklist, c
   .title {
     &::before {
       background-image: none;
+    }
+  }
+}
+
+// Icons in Edit Mode
+
+#indice {
+  .unit-content {
+    .actividades,
+    .material {
+      .add {
+        a.icon-actividad-add::before {
+          background-image: url(images/icons-editmode/icon-activity.png)
+        }
+        a.icon-img-add::before {
+          background-image: url(images/icons-editmode/icon-image.png)
+        }
+        a.icon-musica-add::before {
+          background-image: url(images/icons-editmode/icon-audio.png)
+        }
+        a.icon-video-add::before {
+          background-image: url(images/icons-editmode/icon-video.png)
+        }
+        a.icon-archivo-add::before {
+          background-image: url(images/icons-editmode/icon-file.png)
+        }
+        a.icon-url-add::before {
+          background-image: url(images/icons-editmode/icon-link.png)
+        }
+        a.icon-libro-add::before {
+          background-image: url(images/icons-editmode/icon-digitalbook.png)
+        }
+        a.icon-entregable-add::before {
+          background-image: url(images/icons-editmode/icon-homework.png)
+        }
+      }
+    }
+  }
+}
+
+// Background type in ToC
+
+#indice {
+  .unit-content {
+    .material {
+      .item {
+        .imagen.actividad::before {
+          background-image: url(images/bg/bg01.jpg)
+        }
+        .imagen.img::before {
+          background-image: url(images/bg/bg02.jpg)
+        }
+        .imagen.url::before {
+          background-image: url(images/bg/bg03.jpg)
+        }
+        .imagen.libro::before {
+          background-image: url(images/bg/bg04.jpg)
+        }
+      }
     }
   }
 }

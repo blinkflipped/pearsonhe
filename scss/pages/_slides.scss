@@ -159,6 +159,12 @@ body.body_clase {
   }
 }
 
+// Info
+
+.libro-left ul li a.active {
+  background-color: $color_1;
+}
+
 // Index
 
 .libro-left ul li a.book-index.active {

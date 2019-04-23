@@ -10,7 +10,37 @@
 		// Heredamos de pearsonhe los estilos del CKEditor
 		parent: blink.theme.styles.pearsonhe.prototype,
 		bodyClassName: 'content_type_clase_pearsonhedev',
-		ckEditorStyles: {},
+		ckEditorStyles: {
+			name: 'pearsonhe-dev',
+			styles: [
+				{ name: 'Title 1', element: 'h4', attributes: { 'class': 'bck-title1'} },
+				{ name: 'Title 2', element: 'h4', attributes: { 'class': 'bck-title2'} },
+				{ name: 'Title 3', element: 'h4', attributes: { 'class': 'bck-title3'} },
+				{ name: 'Title 4', element: 'h4', attributes: { 'class': 'bck-title4'} },
+				{ name: 'Title 5', element: 'h4', attributes: { 'class': 'bck-title5'} },
+				{ name: 'Title 6', element: 'h4', attributes: { 'class': 'bck-title6'} },
+				{ name: 'Title 7', element: 'h4', attributes: { 'class': 'bck-title7'} },
+				{ name: 'Title 8', element: 'h4', attributes: { 'class': 'bck-title8'} },
+				{ name: 'Title 9', element: 'h4', attributes: { 'class': 'bck-title9'} },
+				{ name: 'Title 10',element: 'h4', attributes: { 'class': 'bck-title10'} },
+				{ name: 'Title 9', element: 'h4', attributes: { 'class': 'bck-title11'} },
+				{ name: 'Title 10',element: 'h4', attributes: { 'class': 'bck-title12'} },
+				{ name: 'Énfasis', element: 'span', attributes: { 'class': 'bck-enfasis' }},
+				{ name: 'Table', element: 'table', type: 'bck-stack-class', attributes: { 'class': 'bck-table-center'} },
+				{ name: 'Cell 1', element: 'td', attributes: { 'class': 'bck-td' } },
+				{ name: 'Cell 2', element: 'td', attributes: { 'class': 'bck-td-2' } },
+				{ name: 'List 1', element: 'ol', attributes: { 'class': 'bck-ol' } },
+				{ name: 'List 2', element: 'ol', attributes: { 'class': 'bck-ol-2' } },
+				{ name: 'List 3', element: 'ol', attributes: { 'class': 'bck-ol-3' } },
+				{ name: 'List 4', element: 'ol', attributes: { 'class': 'bck-ol-4' } },
+				{ name: 'List 5', element: 'ol', attributes: { 'class': 'bck-ol-5' } },
+				{ name: 'List 6', element: 'ol', attributes: { 'class': 'bck-ol-6' } },
+				{ name: 'List 7', element: 'ol', attributes: { 'class': 'bck-ol-7' } },
+				{ name: 'Bulleted list 1', element: 'ul', attributes: { 'class': 'bck-ul'} },
+				{ name: 'Bulleted list 2', element: 'ul', attributes: { 'class': 'bck-ul-2'} },
+				{ name: 'Bulleted list 3', element: 'ul', attributes: { 'class': 'bck-ul-3'} }
+			]
+		},
 		slidesTitle: {},
 
 		init: function () {
