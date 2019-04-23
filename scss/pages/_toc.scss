@@ -386,7 +386,9 @@ $icon_image_name : animations, audio, concepts, attachments, cases, checklist, c
         .imagen.actividad::before {
           background-image: url(images/bg/bg01.jpg)
         }
-        .imagen.img::before {
+        .imagen.img::before,
+        .imagen.musica::before,
+        .imagen.video::before {
           background-image: url(images/bg/bg02.jpg)
         }
         .imagen.url::before {

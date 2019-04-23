@@ -21,13 +21,13 @@
     font-weight: 400;
 }
 
-#indice .units ul li.active:not(.disabled), 
-body:not(.isTablet) #indice .units ul li:hover:not(.disabled), 
+#indice .units ul li.active:not(.disabled),
+body:not(.isTablet) #indice .units ul li:hover:not(.disabled),
 #indice .units ul li:focus:not(.disabled) {
     background: #047B9C;
 }
 
-body:not(.isTablet) #indice .units ul li:not(.disabled) a:hover .title, 
+body:not(.isTablet) #indice .units ul li:not(.disabled) a:hover .title,
 body:not(.isTablet) #indice .units ul li.active:not(.disabled) a .title {
     color: #fff;
     font-weight: 600;
@@ -35,12 +35,12 @@ body:not(.isTablet) #indice .units ul li.active:not(.disabled) a .title {
 
 /*Crear tema*/
 
-#indice .units ul li.add, #indice .units ul li.add:focus, 
+#indice .units ul li.add, #indice .units ul li.add:focus,
 #indice .units ul li.add:hover {
     background: #c9eaf3 repeat-y -1px;
 }
 
-#indice .units ul li.add .title, 
+#indice .units ul li.add .title,
 #indice .units ul li.add .title:hover {
     color: #047B9C;
 }
@@ -51,7 +51,7 @@ body:not(.isTablet) #indice .units ul li.active:not(.disabled) a .title {
 
 /*Crear actividad*/
 
-#indice .unit-content .actividades .add, 
+#indice .unit-content .actividades .add,
 #indice .unit-content .material .add {
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
@@ -59,7 +59,7 @@ body:not(.isTablet) #indice .units ul li.active:not(.disabled) a .title {
     background: #c9eaf3 repeat-y -1px;
 }
 
-#indice .unit-content .actividades .add .title, 
+#indice .unit-content .actividades .add .title,
 #indice .unit-content .material .add .title {
     color: #047B9C;
 }
@@ -84,3 +84,41 @@ a:hover, a:active, a:focus {
     -moz-box-shadow: 0 0 0 rgba(0,0,0,0.075) inset,0 0 20px #047B9C;
     box-shadow: 0 0 0 rgba(0,0,0,0.075) inset, 0 0 20px #047B9C;
 }
+
+
+/* New icons and bg */
+#indice .unit-content .actividades .add a.icon-actividad-add::before,
+#indice .unit-content .material .add a.icon-actividad-add::before {
+  background-image: url(images/icons-editmode/icon-activity.png); }
+#indice .unit-content .actividades .add a.icon-img-add::before,
+#indice .unit-content .material .add a.icon-img-add::before {
+  background-image: url(images/icons-editmode/icon-image.png); }
+#indice .unit-content .actividades .add a.icon-musica-add::before,
+#indice .unit-content .material .add a.icon-musica-add::before {
+  background-image: url(images/icons-editmode/icon-audio.png); }
+#indice .unit-content .actividades .add a.icon-video-add::before,
+#indice .unit-content .material .add a.icon-video-add::before {
+  background-image: url(images/icons-editmode/icon-video.png); }
+#indice .unit-content .actividades .add a.icon-archivo-add::before,
+#indice .unit-content .material .add a.icon-archivo-add::before {
+  background-image: url(images/icons-editmode/icon-file.png); }
+#indice .unit-content .actividades .add a.icon-url-add::before,
+#indice .unit-content .material .add a.icon-url-add::before {
+  background-image: url(images/icons-editmode/icon-link.png); }
+#indice .unit-content .actividades .add a.icon-libro-add::before,
+#indice .unit-content .material .add a.icon-libro-add::before {
+  background-image: url(images/icons-editmode/icon-digitalbook.png); }
+#indice .unit-content .actividades .add a.icon-entregable-add::before,
+#indice .unit-content .material .add a.icon-entregable-add::before {
+  background-image: url(images/icons-editmode/icon-homework.png); }
+
+#indice .unit-content .material .item .imagen.actividad::before {
+  background-image: url(images/bg/bg01.jpg); }
+#indice .unit-content .material .item .imagen.img::before,
+#indice .unit-content .material .item .imagen.musica::before,
+#indice .unit-content .material .item .imagen.video::before {
+  background-image: url(images/bg/bg02.jpg); }
+#indice .unit-content .material .item .imagen.url::before {
+  background-image: url(images/bg/bg03.jpg); }
+#indice .unit-content .material .item .imagen.libro::before {
+  background-image: url(images/bg/bg04.jpg); }

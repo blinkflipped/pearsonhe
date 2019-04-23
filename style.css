@@ -419,7 +419,9 @@
 
 #indice .unit-content .material .item .imagen.actividad::before {
   background-image: url(images/bg/bg01.jpg); }
-#indice .unit-content .material .item .imagen.img::before {
+#indice .unit-content .material .item .imagen.img::before,
+#indice .unit-content .material .item .imagen.musica::before,
+#indice .unit-content .material .item .imagen.video::before {
   background-image: url(images/bg/bg02.jpg); }
 #indice .unit-content .material .item .imagen.url::before {
   background-image: url(images/bg/bg03.jpg); }
