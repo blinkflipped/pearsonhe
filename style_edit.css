@@ -118,6 +118,7 @@ a:hover, a:active, a:focus {
 
 #indice .unit-content .material .item .imagen.actividad::before {
   background-image: url(images/bg/bg01.jpg); }
+#indice .unit-content .material .item .imagen.archivo::before,
 #indice .unit-content .material .item .imagen.img::before,
 #indice .unit-content .material .item .imagen.musica::before,
 #indice .unit-content .material .item .imagen.video::before {
@@ -127,9 +128,9 @@ a:hover, a:active, a:focus {
 #indice .unit-content .material .item .imagen.libro::before {
   background-image: url(images/bg/bg04.jpg); }
 
-a.icon-wikipedia-add:before,
-.navbar .recursos .filter a.icon-wiki-add:before {
-  background-image: url(images/icons-edistmode/icon-wikipedia.png); }
+a.icon-wikipedia-add:before {
+  background-image: url(images/icons-editmode/icon-wikipedia.png); }
+
 
 /* Info button */
 

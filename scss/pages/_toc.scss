@@ -391,6 +391,7 @@ $icon_image_name : animations, audio, concepts, attachments, cases, checklist, c
         .imagen.actividad::before {
           background-image: url(images/bg/bg01.jpg)
         }
+        .imagen.archivo::before,
         .imagen.img::before,
         .imagen.musica::before,
         .imagen.video::before {
@@ -406,7 +407,8 @@ $icon_image_name : animations, audio, concepts, attachments, cases, checklist, c
     }
   }
 }
-a.icon-wikipedia-add:before,
-.navbar .recursos .filter a.icon-wiki-add:before {
-    background-image: url(images/icons-edistmode/icon-wikipedia.png);
+
+//.navbar .recursos .filter a.icon-wiki-add:before 
+a.icon-wikipedia-add:before {
+    background-image: url(images/icons-editmode/icon-wikipedia.png);
 }
