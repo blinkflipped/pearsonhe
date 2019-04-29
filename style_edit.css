@@ -88,6 +88,7 @@ a:hover, a:active, a:focus {
 
 /* New icons and bg */
 
+
 #indice .unit-content .actividades .add a.icon-actividad-add::before,
 #indice .unit-content .material .add a.icon-actividad-add::before {
   background-image: url(images/icons-editmode/icon-activity.png); }
@@ -115,6 +116,9 @@ a:hover, a:active, a:focus {
 #indice .unit-content .actividades .add a.icon-merge-add::before,
 #indice .unit-content .material .add a.icon-merge-add::before {
   background-image: url(images/icons-editmode/icon-merge.png); }
+#indice .unit-content .actividades .add a.icon-wikipedia-add:before,
+#indice .unit-content .material .add a.icon-wikipedia-add:before {
+  background-image: url(images/icons-editmode/icon-wikipedia.png); }
 
 #indice .unit-content .material .item .imagen.actividad::before {
   background-image: url(images/bg/bg01.jpg); }
@@ -127,9 +131,6 @@ a:hover, a:active, a:focus {
   background-image: url(images/bg/bg03.jpg); }
 #indice .unit-content .material .item .imagen.libro::before {
   background-image: url(images/bg/bg04.jpg); }
-
-a.icon-wikipedia-add:before {
-  background-image: url(images/icons-editmode/icon-wikipedia.png); }
 
 
 /* Info button */

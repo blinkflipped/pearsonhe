@@ -377,6 +377,9 @@ $icon_image_name : animations, audio, concepts, attachments, cases, checklist, c
         a.icon-merge-add::before {
           background-image: url(images/icons-editmode/icon-merge.png)
         }
+        a.icon-wikipedia-add:before {
+          background-image: url(images/icons-editmode/icon-wikipedia.png);
+        }
       }
     }
   }
@@ -406,9 +409,4 @@ $icon_image_name : animations, audio, concepts, attachments, cases, checklist, c
       }
     }
   }
-}
-
-//.navbar .recursos .filter a.icon-wiki-add:before 
-a.icon-wikipedia-add:before {
-    background-image: url(images/icons-editmode/icon-wikipedia.png);
 }
