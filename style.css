@@ -124,7 +124,7 @@
     max-height: none !important;
     margin-bottom: 10px; }
     #indice .units ul li.pearsonhe-toc-home a:not(.delete) {
-      line-height: 0px;
+      line-height: 0;
       padding: 12px 12px 7px; }
     #indice .units ul li.pearsonhe-toc-home a .title {
       display: inline-flex;
@@ -133,7 +133,7 @@
       text-transform: uppercase;
       font-size: 12px;
       font-size: 1.2rem;
-      line-height: 1em;
+      line-height: 16px;
       font-weight: 600;
       color: #6A7070;
       margin: 0; }
@@ -697,7 +697,7 @@ body:not(.isTablet) #book-index #indice .units ul li.active:not(.disabled) a .ti
   min-height: 35px;
   padding-top: 25px;
   border-bottom: 0px solid #DAF0ED;
-  margin-bottom: -14px; }
+  margin-bottom: -19px; }
 
 .popover-title {
   background-color: #DAF0ED;
@@ -966,3 +966,46 @@ a:hover, a:active, a:focus {
   border-radius: 2px;
   -webkit-box-shadow: inset 0 0px 0px transparent;
   box-shadow: inset 0 0px 0px transparent; }
+
+.logo-publisher {
+  float: left;
+  display: block;
+  width: 90px;
+  height: 40px;
+  margin: 5px 0;
+  background: url(./images/logo.png) center center/auto 100% no-repeat; }
+
+.edit .logo-publisher {
+  top: 2px;
+  width: 40px;
+  height: 40px; }
+
+.slider-navigator {
+  display: inline-block;
+  padding: 0 10px;
+  color: #fff;
+  font-size: 1.4rem;
+  -webkit-transition: all ease-in .5s;
+  -o-transition: all ease-in .5s;
+  -moz-transition: all ease-in .5s;
+  transition: all ease-in .5s;
+  cursor: pointer; }
+
+.slider-navigator:hover,
+.slider-navigator.disabled {
+  opacity: .5;
+  filter: alpha(opacity=50); }
+
+.slider-navigator.disabled {
+  cursor: initial; }
+
+.slide-counter {
+  color: #fff;
+  font-size: 1.7rem; }
+
+.toolbar .active,
+.toolbar .blink-hover-active,
+.libro-left .active .info,
+.libro-left .info:hover,
+.libro-left .info.blink-hover-active {
+  background-color: #047B9C !important; }

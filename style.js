@@ -55,52 +55,377 @@
 		},
 		slidesTitle: {},
 
-		init: function () {
+		init: function (scope) {
 			// Utilizamos this.parent declarada al inicio de la clase para llamar al init de la misma.
-			this.parent.init.call(this.parent, this);
-        },
+			var that = scope || this;
+			this.parent.init.call(that);
+						this.addActivityTitle();
+						that.getActualUnitActivities();
+						blink.events.on("course_loaded", function(){
+				that.formatCarouselindicators();
+			});
+			that.addSlideNavigators();
 
-        //BK-15873 Tenemos que sobreescribir removeFinalSlide para que no se pierda la herencia de estilos
-        removeFinalSlide: function () {
-            //BK-15873 Utilizamos this.parent declarada al inicio de la clase
-            this.parent.removeFinalSlide.call(this.parent, this, true);
+		},
+		removeFinalSlide: function (scope) {
+			//BK-15873 Utilizamos this.parent declarada al inicio de la clase
+			var that = scope || this;
+			this.parent.removeFinalSlide.call(that, true);
+		},
+		loadUserData: function () {
+			var urlSeguimiento = '/include/javascript/seguimientoCurso.js.php?idcurso=' + idcurso;
+			loadScript(urlSeguimiento, true, (function (data) {
+				window.actividades = actividades;
+			}).bind(this));
+		},
+		addActivityTitle: function () {
+			if (!blink.courseInfo || !blink.courseInfo.unit) return;
+			var $navbarTitle = $('.navbar.libro').find('span.title');
+			$navbarTitle.css('display', 'inline-block');
+			$navbarTitle.html(blink.courseInfo.unit + ' > ' + blink.courseInfo.lesson);
         },
 
         /**
-        * Realiza operaciones al cargar los datos del curso.
-        * @param  {Object} data Información del curso.
-        */
-        onCourseDataLoaded: function(data) {
-            console.log("onCourseLoaded");
+		 * @summary Gets the activity type subunits of the actual unit.
+		 * @return {Object} Object of the actual unit filtering the not activity type subunits
+		 */
+		getActualUnitActivities: function () {
+			var curso = blink.getCourse(idcurso),
+				that = this,
+				units,
+				unitSubunits,
+				actualActivity,
+				unitActivities = [];
+
+			curso.done(function () {
+				units = curso.responseJSON.units;
+
+				$.each(units, function () {
+					if (this.id && this.id == blink.courseInfo.IDUnit) {
+						unitSubunits = this.subunits.concat(this.resources);
+					}
+				});
+
+				actualActivity = _.find(unitSubunits, function(subunit) {
+					return subunit.id == idclase;
+				});
+
+				if (typeof actualActivity !== "undefined" && actualActivity.level == '6') {
+					unitActivities.push(actualActivity);
+				} else {
+					unitActivities = _.filter(unitSubunits, function(subunit) {
+						return subunit.type == 'actividad' && subunit.level !== '6';
+					});
+				}
+
+                that.subunits = unitActivities;
+                pearsonheApp.customBookIndex(curso.responseJSON);
+			}).done(function(){
+				blink.events.trigger('course_loaded');
+			});
+		},
+
+        /**
+		 * @summary Getting active slide position in relation with the total of the
+		 *          unit slides.
+		 * @param {Array} $subunits Array of activity type objects
+		 * @return {int} Slide position
+		 */
+		getActualSlideNumber: function (subunits) {
+			var actualSlideIndex = $('.swipeview-active').attr('data-page-index'),
+				actualSlide = 1;
+
+			for (var i in subunits) {
+				if (subunits[i].id && parseInt(subunits[i].id) != idclase) {
+					actualSlide += parseInt(subunits[i].pags);
+				} else {
+					actualSlide += parseInt(actualSlideIndex);
+					break;
+				}
+			}
+
+			return actualSlide;
+		},
+        formatCarouselindicators: function (scope, classNavbar) {
+			var that = scope || this,
+				navbar = ((typeof classNavbar !== "undefined" && !classNavbar)?classNavbar:'pearsonhe-navbar'),
+				$navbarBottom = $('.navbar-bottom'),
+				firstSlide = eval('t0_slide');
+			if(blink.courseInfo && blink.courseInfo.courseDateCreated) var courseYearCreated = new Date(blink.courseInfo.courseDateCreated).getFullYear();
+			var yearCopy = courseYearCreated !== undefined ? courseYearCreated : 2019;
+			$navbarBottom
+				.attr('class', navbar)
+				.wrapInner('<div class="navbar-content"></div>')
+				.find('ol')
+					.before('<span class="copyright">&copy;' +  yearCopy + '</span>')
+					.wrap('<div id="top-navigator"/>')
+					.remove()
+					.end();
+
+			$('#volverAlIndice').click(function() {
+				return showCursoCommit();
+			});
+
+			var subunits = that.subunits,
+				totalSlides = 0,
+				subunit_index,
+				subunit_pags;
+
+			// Different behaviour depending on whether the slides are accessed from
+			// a book or from a homework link or similar
+			if (subunits.length !== 0) {
+				for (var i in subunits) {
+					if (subunits[i].pags) {
+						var subunitSlides = parseInt(subunits[i].pags);
+						totalSlides += subunitSlides;
+					}
+					if (subunits[i].id && subunits[i].id == idclase) {
+						subunit_index = i;
+						subunit_pags = parseInt(subunits[i].pags);
+					}
+				}
+
+				that.totalSlides = totalSlides;
+
+				$('#top-navigator').append('<span class="left slider-navigator">' +
+						'<span class="fa fa-chevron-left"></span>' +
+					'</span>' +
+					'<span class="slide-counter" data-subunit-index="' + subunit_index +
+						'" data-subunit-pags="' + subunit_pags + '">' +
+						that.getActualSlideNumber(subunits) + ' / ' + totalSlides +
+					'</span>' +
+					'<span class="right slider-navigator">' +
+						'<span class="fa fa-chevron-right"></span>' +
+					'</span>');
+
+				blink.events.on('section:shown', function() {
+					$('.slide-counter').html(that.getActualSlideNumber(subunits) +
+						' / ' + totalSlides);
+				});
+			} else {
+				$('#top-navigator').append('<span class="left slider-navigator">' +
+						'<span class="fa fa-chevron-left"></span>' +
+					'</span>' +
+					'<span class="slide-counter">' + (window.activeSlide + 1) +
+						' / ' + window.secuencia.length +
+					'</span>' +
+					'<span class="right slider-navigator">' +
+						'<span class="fa fa-chevron-right"></span>' +
+					'</span>');
+
+				blink.events.on('section:shown', function() {
+					$('.slide-counter').html((window.activeSlide + 1) +
+						' / ' + window.secuencia.length);
+					$('.bck-dropdown-2').hideBlink();
+				});
+			}
+
+			blink.events.on('section:shown', function() {
+				var sectionTitle = eval('t' + blink.activity.getFirstSlideIndex(window.activeSlide) +
+					'_slide').title;
+				$navbarBottom.find('.sectionTitle').text(sectionTitle);
+			});
+
+			if (firstSlide.seccion) {
+				$navbarBottom.addClass('first-is-section');
+			}
+
+			blink.events.trigger(true, 'style:endFormatCarousel');
         },
 
-        loadUserData: function() {
-            var urlSeguimiento = '/include/javascript/seguimientoCurso.js.php?idcurso=' + idcurso;
-            loadScript(urlSeguimiento, true, (function(data) {
-            window.actividades = actividades;
-            }).bind(this));
-        },
+		addSlideNavigators: function () {
+			var that = this;
+			blink.events.on("course_loaded", function(){
+
+				var that = blink.activity.currentStyle,
+					subunit_index = parseInt($('.slide-counter').attr('data-subunit-index')),
+					level_six = that.subunits.length == 1 && that.subunits[0].level == 6;
+
+				$('.slider-control').off('click');
+
+				// Navigation change depending on whether the slides are accessed from
+				// a book or from a homework link or similar
+				if (that.subunits.length !== 0 && !level_six) {
+					// Slider controls must allow navigation among all the activity subunits
+					// in the current unit.
+
+					$('.left.slider-control, .left.slider-navigator').click(function () {
+						if (!$(this).hasClass('disabled')) {
+							if(activeSlide == 0) {
+								redireccionar('/coursePlayer/clases2.php?editar=0&idcurso=' +
+									idcurso + '&idclase=' + that.subunits[subunit_index - 1].id + '&modo=0&numSec=' +
+									that.subunits[subunit_index - 1].numSlides, false, undefined);
+							} else {
+								blink.activity.showPrevSection();
+							}
+						}
+					});
+					$('.right.slider-control, .right.slider-navigator').click(function () {
+						if (!$(this).hasClass('disabled')) {
+							if(activeSlide == parseInt(that.subunits[subunit_index].pags) - 1) {
+								redireccionar('/coursePlayer/clases2.php?editar=0&idcurso=' +
+									idcurso + '&idclase=' + that.subunits[subunit_index + 1].id + '&modo=0' + ((typeof window.esPopup !== "undefined" && window.esPopup)?"&popup=1":""),
+									false, undefined);
+							} else {
+								blink.activity.showNextSection();
+							}
+						}
+					});
+				} else {
+					$('.left.slider-control, .left.slider-navigator').click(function () {
+						blink.activity.showPrevSection();
+					});
+					$('.right.slider-control, .right.slider-navigator').click(function () {
+						blink.activity.showNextSection();
+					});
+				}
+
+				$(document).ready(function() {
+					blink.events.on('showSlide:after', function() {
+						that.enableSliders();
+					});
+				});
+			});
+		},
+
+		/**
+		 * @summary Enables all slider controls and disables when appropiate
+		 */
+		enableSliders: function () {
+			// Removes disabled class to all navigation buttons and applies
+			// just if its first or last slide of all activities
+			$('.slider-control, .slider-navigator').removeClass('disabled');
+			var that = blink.activity.currentStyle,
+				subunit_index = parseInt($('.slide-counter').attr('data-subunit-index')),
+				level_six = this.subunits.length == 1 && this.subunits[0].level == 6;
+
+			// Navigation change depending on whether the slides are accessed from
+			// a book or from a homework link or similar
+			if (this.subunits.length !== 0 && modoVisualizacionLabel != "standalone") {
+				if (this.getActualSlideNumber(this.subunits) == 1) {
+					$('.slider-control.left, .slider-navigator.left').addClass('disabled');
+				}
+				if (this.getActualSlideNumber(this.subunits) == this.totalSlides && !level_six) {
+					$('.slider-control.right, .slider-navigator.right').addClass('disabled');
+				}
+			} else {
+				if (window.activeSlide == 0) {
+					$('.slider-control.left, .slider-navigator.left').addClass('disabled');
+				}
+				if(window.activeSlide == parseInt(that.subunits[subunit_index].pags) - 1 && !level_six){
+					$('.slider-control.right, .slider-navigator.right').addClass('disabled');
+				}
+			}
+		},
+		showBookIndexInClass: function () {
+			return modoVisualizacionLabel != "standalone";
+		},
+        habilitarTemas: function(){
+
+			var $temas = $(".js-indice-tema");
+            $temas.removeClass("disabled locked");
+            $temas.each(function(){
+
+				var id_tema = $(this).attr("data-id");
+				var selector_accesos = ".unit-content[data-id='" + id_tema + "'] .js-list-activities li .item-containment .acceso";
+
+				var t_actividades_abiertas = $(selector_accesos + ".invisible").length;
+                var t_accesos = $(selector_accesos).length;
+
+                var el_tema = $("#tema" + id_tema);
+
+                if(el_tema.hasClass("pearsonhe-toc-unithead")){
+                    var c_temas_incluidos = 0;
+                    $temas.each(function(){
+                        if($(this).attr("data-id") != id_tema){
+                            if(!$(this).hasClass("pearsonhe-toc-unithead")){
+                                c_temas_incluidos++;
+                            }else{
+                                c_temas_incluidos = 0;
+                            }
+                        }
+                    });
+                    if(c_temas_incluidos === 0 && c_temas_incluidos !== undefined){
+                        el_tema.removeClass("locked");
+                    }else{
+                        el_tema.addClass("locked");
+                    }
+                }else if(t_actividades_abiertas > 0){
+                    el_tema.removeClass("locked");
+                }else{
+                    el_tema.addClass("locked");
+                }
+                if(t_accesos <= 0){
+                    el_tema.addClass("locked");
+                }else{
+                    el_tema.removeClass("locked");
+                }
+
+            });
+        }
 	};
 
 	pearsonheDevStyle.prototype = _.extend({}, new blink.theme.styles.pearsonhe(), pearsonheDevStyle.prototype);
 
-    blink.theme.styles['pearsonhe-dev'] = pearsonheDevStyle;
+	blink.theme.styles['pearsonhe-dev'] = pearsonheDevStyle;
 
-    blink.events.on('digitalbook:bpdfloaded', function () {
-        // Ejemplo carga de datos del curso desde un libro digital.
-        blink.getCourse(idcurso).done(function (data) {
-          var style = new PearsonheDevStyle;
-          style.onCourseDataLoaded(data);
-        });
-      });
+	blink.events.on('digitalbook:bpdfloaded', function() {
+		blink.getCourse(idcurso).done(function(response) {
+			var unit = _.findWhere(response.units, {id: idtema.toString()}),
+				subunit = _.findWhere(unit.subunits, {id: window.idclase.toString()}),
+            	title = unit.title.replace(/(<([^>]+)>)/ig,""),
+            	subunitTitle = subunit.title.replace(/(<([^>]+)>)/ig,""),
+            	$navbarTitle = $('.navbar.libro').find('span.title');
+			$navbarTitle.html(title + ' > ' + subunitTitle);
+		});
+	});
 
-      // Remove Info
-      blink.events.on('indexLoaded', function(){
-				pearsonheApp.customBookIndex();
-      });
+	// Remove Info
+	blink.events.on('indexLoaded', function () {
+		pearsonheApp.customBookIndex();
+	});
 
-})( blink );
+})(blink);
 
+
+$(function () {
+	loadJSON(function (json) {
+		// console.log(json);
+	})
+});
+/**
+ * loadJSON Ejecuta una llamada asíncrona dependiendo del entorno para obtener el cursoJSON
+ * @param  	function 	callback 	Función de callback del ajax.
+ * @return 	boolean		False en caso de que no haya callback.
+ */
+function loadJSON(callback) {
+	if (!callback && typeof callback === 'undefined') {
+		return false;
+	}
+
+	var isBlink = (window.location.href.indexOf("blinklearning.com") > -1);
+
+	if (isBlink) { //online
+		blink.getCourse(window.idcurso).done(callback);
+	} else { //local
+		var url = window.location.href.replace("curso2", "curso_json");
+
+		if (offline) {
+			if (url.indexOf("curso_json") > -1) {
+				url = removeParams(['idtema', 'idalumno'], url);
+			}
+		}
+
+		$.ajax({
+			url: url,
+			dataType: 'json',
+			beforeSend: function (xhr) {
+				if (xhr.overrideMimeType) xhr.overrideMimeType("application/json");
+			},
+			success: callback
+		});
+	}
+}
 
 // ████░██▄░▄██░████░████░████▄░██▄░██░░▄███▄░░██░░
 // ██▄░░░▀███▀░░░██░░██▄░░██░██░███▄██░██▀░▀██░██░░
@@ -117,7 +442,7 @@ pearsonheApp.tags = {
 }
 
 pearsonheApp.text = {
-  menu : 'Menu'
+	menu : 'Menu'
 }
 
 pearsonheApp.getCourseData = function() {
