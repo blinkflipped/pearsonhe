@@ -454,9 +454,13 @@ pearsonheApp.getCourseData = function() {
 
 }
 
-pearsonheApp.customBookIndex = function() {
+pearsonheApp.customBookIndex = function(data) {
 
-	var data = pearsonheApp.courseData;
+	if (data !== undefined){
+		pearsonheApp.courseData = data;
+	} else {
+		data = pearsonheApp.courseData;
+	}
 
 	var newBookIndexHeader = '<div class="pearsonhe-bookindex-header"><h2 class="pearsonhe-title-1">'+pearsonheApp.text.menu+'</h2></div>';
 	var headerExists = $('#book-index #wrapper .pearsonhe-bookindex-header').length;
