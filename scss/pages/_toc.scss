@@ -13,7 +13,6 @@
           .title {
             @include text-ui-small();
             color: $color_1;
-            line-height: 16px;
           }
           &:not(.delete) {
             padding: 8px 10px 4px 30px;
@@ -94,6 +93,7 @@
               color: $color_1;
               font-weight: 400;
               position: relative;
+              line-height: 16px;
               &::before {
                 content: '';
                 display: block;

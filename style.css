@@ -104,8 +104,7 @@
       font-size: 12px;
       font-size: 1.2rem;
       line-height: 1.3333333333em;
-      color: #047B9C;
-      line-height: 16px; }
+      color: #047B9C; }
     #indice .units ul li a:not(.delete) {
       padding: 8px 10px 4px 30px; }
   #indice .units ul li:not(.add) a .title {
@@ -164,7 +163,8 @@
       line-height: 1.25em;
       color: #047B9C;
       font-weight: 400;
-      position: relative; }
+      position: relative;
+      line-height: 16px; }
       #indice .units ul li.pearsonhe-toc-unithead a .title::before {
         content: '';
         display: block;
