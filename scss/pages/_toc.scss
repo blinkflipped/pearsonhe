@@ -219,6 +219,10 @@
       .title-buttons {
         display: none;
       }
+      .item-containment {
+        display: inline-flex;
+        flex-direction: row-reverse;
+      }
       .item {
         border-bottom: 1px solid $color_3;
         padding: 0;
@@ -286,6 +290,9 @@
           display: inline-block;
           float: none;
           margin-top: 10px;
+          &:empty {
+            display: none;
+          }
         }
       }
     }

@@ -240,6 +240,9 @@
     margin-top: 14px; }
     #indice .unit-content .actividades .title-buttons {
       display: none; }
+    #indice .unit-content .actividades .item-containment {
+      display: inline-flex;
+      flex-direction: row-reverse; }
     #indice .unit-content .actividades .item {
       border-bottom: 1px solid #C7C7C7;
       padding: 0;
@@ -300,6 +303,8 @@
         display: inline-block;
         float: none;
         margin-top: 10px; }
+        #indice .unit-content .actividades .item .pags:empty {
+          display: none; }
 
 #indice .unit-content .actividades .item.pearsonhe-icon .title {
   display: inline-flex;

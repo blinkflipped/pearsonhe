@@ -470,8 +470,8 @@ pearsonheApp.customBookIndex = function(data) {
 	$.each(data.units, function(i, unit) {
 		var unitId = unit.id,
 				unitTags = unit.tags,
+				unitTags = unitTags.toLowerCase(),
 				unitTagsArray = (typeof unitTags !== 'undefined') ? unitTags.split(" ") : [];
-
 
 		var $listUnitsItem = $('#list-units li[data-id="'+unitId+'"]');
 
