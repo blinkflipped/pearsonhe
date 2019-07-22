@@ -116,8 +116,6 @@
       color: #047B9C; }
       body:not(.isTablet) #indice .units ul li.active:not(.disabled):not(.pearsonhe-toc-active) a .title {
         color: #047B9C; }
-  #indice .units ul li.pearsonhe-toc-subunit-active {
-    max-height: 100px; }
   #indice .units ul li.pearsonhe-toc-home {
     border: 1px solid #6A7070;
     background-color: transparent;
@@ -150,6 +148,8 @@
         background-image: url("images/pearsonhe-home.png");
         margin-right: 12px;
         margin-top: -5px; }
+  #indice .units ul li.pearsonhe-toc-subunit-active {
+    max-height: 100px; }
   #indice .units ul li.pearsonhe-toc-subunit-woparent a:not(.delete) {
     padding-left: 12px; }
   #indice .units ul li.pearsonhe-toc-unithead {
@@ -635,6 +635,98 @@ body:not(.isTablet) #book-index #indice .units ul li.active:not(.disabled) a .ti
   color: #DAF0ED;
   font-weight: normal; }
 
+/* EXTERNAL : NAVBAR */
+#top-navigator {
+  float: right;
+  display: inline-block;
+  width: auto;
+  height: 44px;
+  overflow: hidden;
+  line-height: 5.0rem; }
+
+#top-navigator.show_left:before {
+  background: -webkit-gradient(linear, left top, right top, from(#7aac39), to(transparent));
+  background: -webkit-linear-gradient(left, #7aac39, transparent);
+  background: -moz-linear-gradient(left, #7aac39, transparent);
+  background: -o-linear-gradient(left, #7aac39, transparent);
+  background: linear-gradient(to right, #7aac39, transparent); }
+
+#top-navigator.show_right:after {
+  background: -webkit-gradient(linear, right top, left top, from(#7aac39), to(transparent));
+  background: -webkit-linear-gradient(right, #7aac39, transparent);
+  background: -moz-linear-gradient(right, #7aac39, transparent);
+  background: -o-linear-gradient(right, #7aac39, transparent);
+  background: linear-gradient(to left, #7aac39, transparent); }
+
+.pearsonhe-navbar h3 {
+  width: 75%;
+  margin: auto;
+  margin-bottom: 15px;
+  font-size: 2.0rem;
+  font-weight: bold; }
+
+.pearsonhe-navbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  width: 100%;
+  height: 50px;
+  border-bottom: 1px solid black;
+  background: #545759; }
+
+body.is_app .pearsonhe-navbar {
+  /*top: 0;*/
+  -webkit-transition: top 0.5s linear;
+  -o-transition: top 0.5s linear;
+  -moz-transition: top 0.5s linear;
+  transition: top 0.5s linear; }
+
+body.is_app .pearsonhe-navbar.ocultar {
+  top: -136px; }
+
+.pearsonhe-navbar .navbar-content {
+  width: 100%;
+  height: 100%;
+  padding: 0 20px;
+  text-align: center; }
+
+.pearsonhe-navbar .copyright {
+  color: #fff;
+  line-height: 5.0rem; }
+
+.logo-publisher {
+  float: left;
+  display: block;
+  width: 90px;
+  height: 40px;
+  margin: 5px 0;
+  background: url(./images/logo.png) center center/auto 100% no-repeat; }
+
+.slider-navigator {
+  display: inline-block;
+  padding: 0 10px;
+  color: #fff;
+  font-size: 1.4rem;
+  -webkit-transition: all ease-in .5s;
+  -o-transition: all ease-in .5s;
+  -moz-transition: all ease-in .5s;
+  transition: all ease-in .5s;
+  cursor: pointer; }
+
+.slider-navigator:hover,
+.slider-navigator.disabled {
+  opacity: .5;
+  filter: alpha(opacity=50); }
+
+.slider-navigator.disabled {
+  cursor: initial; }
+
+.slide-counter {
+  color: #fff;
+  font-size: 1.7rem; }
+
+/* END EXTERNAL : NAVBAR */
 /*CAMBIOS NELLY*/
 /*Tamaño de texto*/
 #actividad .pregunta .texto_curso {

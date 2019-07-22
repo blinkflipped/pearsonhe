@@ -36,9 +36,6 @@
             }
           }
         }
-        &.pearsonhe-toc-subunit-active {
-          max-height: 100px;
-        }
 
         &.pearsonhe-toc-home {
           border: 1px solid $color_4;
@@ -77,6 +74,11 @@
             }
           }
         }
+
+        &.pearsonhe-toc-subunit-active {
+          max-height: 100px;
+        }
+
         &.pearsonhe-toc-subunit-woparent {
           a {
             &:not(.delete) {

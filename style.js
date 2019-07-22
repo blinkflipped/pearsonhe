@@ -531,6 +531,7 @@ pearsonheApp.getTocInfo = function() {
 				unitDescription = unit.description,
 				unitId = unit.id,
 				unitTags = unit.tags,
+				unitTags = unitTags.toLowerCase(),
 				unitTagsArray = (typeof unitTags !== 'undefined') ? unitTags.split(" ") : [];
 
 		var newHeader = '<div class="pearson-header"><h2 class="pearsonhe-title-1">'+unitTitle+'</h2><div class="pearsonhe-description">'+unitDescription+'</div></div>';
@@ -560,6 +561,7 @@ pearsonheApp.getTocInfo = function() {
 		$.each(unit.subunits, function(i, subunit) {
 
 			var subunitTag = subunit.tags,
+					subunitTag = subunitTag.toLowerCase(),
 					subunitId = subunit.id;
 			if (typeof subunitTag === 'undefined') subunitTag = 'self';
 			$('#indice .unit-content .item[data-id="'+subunitId+'"]').addClass('pearsonhe-icon pearsonhe-icon-'+subunitTag);
