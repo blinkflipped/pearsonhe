@@ -564,7 +564,16 @@ pearsonheApp.getTocInfo = function() {
 					subunitTag = subunitTag.toLowerCase(),
 					subunitId = subunit.id;
 			if (typeof subunitTag === 'undefined') subunitTag = 'self';
-			$('#indice .unit-content .item[data-id="'+subunitId+'"]').addClass('pearsonhe-icon pearsonhe-icon-'+subunitTag);
+
+			var $subunitIdItem = $('#indice .unit-content .item[data-id="'+subunitId+'"]');
+
+			if (subunitTag.length) {
+				$subunitIdItem.addClass('pearsonhe-icon');
+
+				$.each(subunitTag, function(i, tag) {
+					$subunitIdItem.addClass('pearsonhe-icon-'+tag);
+				});
+			}
 
 		});
 	});
