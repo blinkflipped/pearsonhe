@@ -571,7 +571,6 @@ pearsonheApp.getTocInfo = function() {
 
 				$.each(subunitTagsArray, function(i, tag) {
 					$subunitIdItem.addClass('pearsonhe-icon-'+tag);
-					console.log(tag)
 				});
 			}
 
