@@ -1,4 +1,3 @@
-
 /*Listado de unidades*/
 
 #indice .units ul li {
@@ -33,9 +32,11 @@ body:not(.isTablet) #indice .units ul li.active:not(.disabled) a .title {
     font-weight: 600;
 }
 
+
 /*Crear tema*/
 
-#indice .units ul li.add, #indice .units ul li.add:focus,
+#indice .units ul li.add,
+#indice .units ul li.add:focus,
 #indice .units ul li.add:hover {
     background: #c9eaf3 repeat-y -1px;
 }
@@ -48,6 +49,7 @@ body:not(.isTablet) #indice .units ul li.active:not(.disabled) a .title {
 .plusBlink {
     background-color: #047B9C;
 }
+
 
 /*Crear actividad*/
 
@@ -64,8 +66,12 @@ body:not(.isTablet) #indice .units ul li.active:not(.disabled) a .title {
     color: #047B9C;
 }
 
+
 /*Listado actividades*/
-a:hover, a:active, a:focus {
+
+a:hover,
+a:active,
+a:focus {
     color: #047B9C;
 }
 
@@ -74,67 +80,112 @@ a:hover, a:active, a:focus {
     border-right-color: #047a9c;
     border-bottom-color: #047a9c;
     border-left-color: #047a9c;
-    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.075) inset, 0 0 8px #047a9c4d;
-    -moz-box-shadow: 0 1px 1px rgba(0,0,0,0.075) inset,0 0 8px #047a9c4d;
-    box-shadow: 0 1px 1px rgba(0,0,0,0.075) inset, 0 0 8px #047a9c4d;
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px #047a9c4d;
+    -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px #047a9c4d;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px #047a9c4d;
 }
 
 #indice .units ul li.drag-over {
-    -webkit-box-shadow: 0 0 0 rgba(0,0,0,0.075) inset, 0 0 20px #047B9C;
-    -moz-box-shadow: 0 0 0 rgba(0,0,0,0.075) inset,0 0 20px #047B9C;
-    box-shadow: 0 0 0 rgba(0,0,0,0.075) inset, 0 0 20px #047B9C;
+    -webkit-box-shadow: 0 0 0 rgba(0, 0, 0, 0.075) inset, 0 0 20px #047B9C;
+    -moz-box-shadow: 0 0 0 rgba(0, 0, 0, 0.075) inset, 0 0 20px #047B9C;
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0.075) inset, 0 0 20px #047B9C;
 }
 
 
 /* New icons and bg */
 
-
 #indice .unit-content .actividades .add a.icon-actividad-add::before,
 #indice .unit-content .material .add a.icon-actividad-add::before {
-  background-image: url(images/icons-editmode/icon-activity.png); }
+	background-image: url(images/icons-editmode/icon-activity.png);
+}
+
 #indice .unit-content .actividades .add a.icon-img-add::before,
 #indice .unit-content .material .add a.icon-img-add::before {
-  background-image: url(images/icons-editmode/icon-image.png); }
+	background-image: url(images/icons-editmode/icon-image.png);
+}
+
 #indice .unit-content .actividades .add a.icon-musica-add::before,
 #indice .unit-content .material .add a.icon-musica-add::before {
-  background-image: url(images/icons-editmode/icon-audio.png); }
+	background-image: url(images/icons-editmode/icon-audio.png);
+}
+
 #indice .unit-content .actividades .add a.icon-video-add::before,
 #indice .unit-content .material .add a.icon-video-add::before {
-  background-image: url(images/icons-editmode/icon-video.png); }
+	background-image: url(images/icons-editmode/icon-video.png);
+}
+
 #indice .unit-content .actividades .add a.icon-archivo-add::before,
 #indice .unit-content .material .add a.icon-archivo-add::before {
-  background-image: url(images/icons-editmode/icon-file.png); }
+	background-image: url(images/icons-editmode/icon-file.png);
+}
+
 #indice .unit-content .actividades .add a.icon-url-add::before,
 #indice .unit-content .material .add a.icon-url-add::before {
-  background-image: url(images/icons-editmode/icon-link.png); }
+	background-image: url(images/icons-editmode/icon-link.png);
+}
+
 #indice .unit-content .actividades .add a.icon-libro-add::before,
 #indice .unit-content .material .add a.icon-libro-add::before {
-  background-image: url(images/icons-editmode/icon-digitalbook.png); }
+	background-image: url(images/icons-editmode/icon-digitalbook.png);
+}
+
 #indice .unit-content .actividades .add a.icon-entregable-add::before,
 #indice .unit-content .material .add a.icon-entregable-add::before {
-  background-image: url(images/icons-editmode/icon-homework.png); }
+	background-image: url(images/icons-editmode/icon-homework.png);
+}
+
 #indice .unit-content .actividades .add a.icon-merge-add::before,
 #indice .unit-content .material .add a.icon-merge-add::before {
-  background-image: url(images/icons-editmode/icon-merge.png); }
+	background-image: url(images/icons-editmode/icon-merge.png);
+}
+
 #indice .unit-content .actividades .add a.icon-wikipedia-add:before,
 #indice .unit-content .material .add a.icon-wikipedia-add:before {
-  background-image: url(images/icons-editmode/icon-wikipedia.png); }
+	background-image: url(images/icons-editmode/icon-wikipedia.png);
+}
 
 #indice .unit-content .material .item .imagen.actividad::before {
-  background-image: url(images/bg/bg01.jpg); }
+	background-image: url(images/bg/bg01.jpg);
+}
+
 #indice .unit-content .material .item .imagen.archivo::before,
 #indice .unit-content .material .item .imagen.img::before,
 #indice .unit-content .material .item .imagen.musica::before,
 #indice .unit-content .material .item .imagen.video::before {
-  background-image: url(images/bg/bg02.jpg); }
-#indice .unit-content .material .item .imagen.url::before {
-  background-image: url(images/bg/bg03.jpg); }
-#indice .unit-content .material .item .imagen.libro::before {
-  background-image: url(images/bg/bg04.jpg); }
+	background-image: url(images/bg/bg02.jpg);
+}
 
+#indice .unit-content .material .item .imagen.url::before {
+	background-image: url(images/bg/bg03.jpg);
+}
+
+#indice .unit-content .material .item .imagen.libro::before {
+	background-image: url(images/bg/bg04.jpg);
+}
+
+#indice .unit-content .actividades .item .text{
+	margin-left: 22px;
+}
+
+#indice .unit-content .actividades .item .title{
+	max-width: 360px;
+}
 
 /* Info button */
 
+.toolbar .active,
+.toolbar .blink-hover-active,
+.libro-left .active .info,
+.libro-left .info:hover,
+.libro-left .info.blink-hover-active,
 .libro-left ul li a.active {
-  background-color: #047B9C;
+	background-color: #047B9C !important;
 }
+
+@media (max-width: 579px){
+	.not-student #indice .unit-content .material .item .delete,
+	.not-student #indice .unit-content .material .item .edit{
+		display: block;
+	}
+}
+
