@@ -1,17 +1,17 @@
 (function (blink) {
 	'use strict';
 
-	var pearsonheDevStyle = function () {
-			blink.theme.styles.pearsonhe.apply(this, arguments);
+	var pearsonheStyle = function () {
+			blink.theme.styles.basic.apply(this, arguments);
 		},
 		page = blink.currentPage;
 
-	pearsonheDevStyle.prototype = {
-		// Heredamos de pearsonhe los estilos del CKEditor
-		parent: blink.theme.styles.pearsonhe.prototype,
-		bodyClassName: 'content_type_clase_pearsonhedev',
-		ckEditorStyles: {
-			name: 'Pearsonhe-dev',
+	pearsonheStyle.prototype = {
+		// Heredamos de basic los estilos del CKEditor
+		parent: blink.theme.styles.basic.prototype,
+		bodyClassName: 'content_type_clase_pearsonhe',
+        ckEditorStyles: {
+			name: 'pearsonhe',
 			styles: [
 				{ name: 'Title 1', element: 'h4', attributes: { 'class': 'bck-title1'} },
 				{ name: 'Title 2', element: 'h4', attributes: { 'class': 'bck-title2'} },
@@ -59,13 +59,20 @@
 			// Utilizamos this.parent declarada al inicio de la clase para llamar al init de la misma.
 			var that = scope || this;
 			this.parent.init.call(that);
-						this.addActivityTitle();
-						that.getActualUnitActivities();
-						blink.events.on("course_loaded", function(){
+            this.addActivityTitle();
+            that.getActualUnitActivities();
+            blink.events.on("course_loaded", function(){
 				that.formatCarouselindicators();
 			});
 			that.addSlideNavigators();
 
+		},
+		initTOC: function(scope) {
+			// Utilizamos this.parent declarada al inicio de la clase para llamar al init de la misma.
+			var that = scope || this;
+			this.parent.initTOC && this.parent.initTOC.call(that);
+
+			that.habilitarTemas();
 		},
 		removeFinalSlide: function (scope) {
 			//BK-15873 Utilizamos this.parent declarada al inicio de la clase
@@ -101,7 +108,7 @@
 				units = curso.responseJSON.units;
 
 				$.each(units, function () {
-					if (this.id && this.id == blink.courseInfo.IDUnit) {
+					if (this.id && blink.courseInfo && this.id == blink.courseInfo.IDUnit) {
 						unitSubunits = this.subunits.concat(this.resources);
 					}
 				});
@@ -137,7 +144,7 @@
 
 			for (var i in subunits) {
 				if (subunits[i].id && parseInt(subunits[i].id) != idclase) {
-					actualSlide += parseInt(subunits[i].pags);
+					actualSlide += blink.activity.getActivityPages(subunits[i]);
 				} else {
 					actualSlide += parseInt(actualSlideIndex);
 					break;
@@ -166,6 +173,8 @@
 				return showCursoCommit();
 			});
 
+			var no_concatenadas = blink.activity.getActivityLength();
+
 			var subunits = that.subunits,
 				totalSlides = 0,
 				subunit_index,
@@ -176,16 +185,16 @@
 			if (subunits.length !== 0) {
 				for (var i in subunits) {
 					if (subunits[i].pags) {
-						var subunitSlides = parseInt(subunits[i].pags);
+						var subunitSlides = blink.activity.getActivityPages(subunits[i]);
 						totalSlides += subunitSlides;
 					}
 					if (subunits[i].id && subunits[i].id == idclase) {
 						subunit_index = i;
-						subunit_pags = parseInt(subunits[i].pags);
+						subunit_pags = blink.activity.getActivityPages(subunits[i]);
 					}
 				}
 
-				that.totalSlides = totalSlides;
+				that.totalSlides = (checkModoExamen())?blink.activity.numSlides:totalSlides;
 
 				$('#top-navigator').append('<span class="left slider-navigator">' +
 						'<span class="fa fa-chevron-left"></span>' +
@@ -203,19 +212,19 @@
 						' / ' + totalSlides);
 				});
 			} else {
-				$('#top-navigator').append('<span class="left slider-navigator">' +
-						'<span class="fa fa-chevron-left"></span>' +
-					'</span>' +
-					'<span class="slide-counter">' + (window.activeSlide + 1) +
-						' / ' + window.secuencia.length +
-					'</span>' +
-					'<span class="right slider-navigator">' +
-						'<span class="fa fa-chevron-right"></span>' +
-					'</span>');
+			$('#top-navigator').append('<span class="left slider-navigator">' +
+					'<span class="fa fa-chevron-left"></span>' +
+				'</span>' +
+				'<span class="slide-counter">' + (window.activeSlide + 1) +
+					' / ' + window.secuencia.length +
+				'</span>' +
+				'<span class="right slider-navigator">' +
+					'<span class="fa fa-chevron-right"></span>' +
+				'</span>');
 
-				blink.events.on('section:shown', function() {
-					$('.slide-counter').html((window.activeSlide + 1) +
-						' / ' + window.secuencia.length);
+			blink.events.on('section:shown', function() {
+				$('.slide-counter').html((window.activeSlide + 1) +
+					' / ' + window.secuencia.length);
 					$('.bck-dropdown-2').hideBlink();
 				});
 			}
@@ -226,7 +235,7 @@
 				$navbarBottom.find('.sectionTitle').text(sectionTitle);
 			});
 
-			if (firstSlide.seccion) {
+			if (firstSlide && firstSlide.seccion) {
 				$navbarBottom.addClass('first-is-section');
 			}
 
@@ -236,7 +245,6 @@
 		addSlideNavigators: function () {
 			var that = this;
 			blink.events.on("course_loaded", function(){
-
 				var that = blink.activity.currentStyle,
 					subunit_index = parseInt($('.slide-counter').attr('data-subunit-index')),
 					level_six = that.subunits.length == 1 && that.subunits[0].level == 6;
@@ -248,13 +256,17 @@
 				if (that.subunits.length !== 0 && !level_six) {
 					// Slider controls must allow navigation among all the activity subunits
 					// in the current unit.
-
+					var idgrupo = window.idgrupo,
+						idalumno = window.idalumno,
+						slideNavParams = '';
+					if (idgrupo) slideNavParams += '&idgrupo=' + idgrupo;
+					if (idalumno) slideNavParams += '&idalumno=' + idalumno;
 					$('.left.slider-control, .left.slider-navigator').click(function () {
 						if (!$(this).hasClass('disabled')) {
 							if(activeSlide == 0) {
 								redireccionar('/coursePlayer/clases2.php?editar=0&idcurso=' +
-									idcurso + '&idclase=' + that.subunits[subunit_index - 1].id + '&modo=0&numSec=' +
-									that.subunits[subunit_index - 1].numSlides, false, undefined);
+									idcurso + '&idclase=' + that.subunits[subunit_index - 1].id + '&modo='+modoVisualizacion+'&numSec=' +
+									that.subunits[subunit_index - 1].numSlides + slideNavParams, false, undefined);
 							} else {
 								blink.activity.showPrevSection();
 							}
@@ -262,9 +274,10 @@
 					});
 					$('.right.slider-control, .right.slider-navigator').click(function () {
 						if (!$(this).hasClass('disabled')) {
-							if(activeSlide == parseInt(that.subunits[subunit_index].pags) - 1) {
-								redireccionar('/coursePlayer/clases2.php?editar=0&idcurso=' +
-									idcurso + '&idclase=' + that.subunits[subunit_index + 1].id + '&modo=0' + ((typeof window.esPopup !== "undefined" && window.esPopup)?"&popup=1":""),
+							if(activeSlide == parseInt(that.subunits[subunit_index].pags) - 1 && !checkModoExamen()) {
+								redireccionar('/coursePlayer/clases2.php?editar=0&numSec=1&idcurso=' +
+									idcurso + '&idclase=' + that.subunits[subunit_index + 1].id + '&modo='+modoVisualizacion+
+									((typeof window.esPopup !== "undefined" && window.esPopup)?"&popup=1":"")  + slideNavParams,
 									false, undefined);
 							} else {
 								blink.activity.showNextSection();
@@ -279,6 +292,8 @@
 						blink.activity.showNextSection();
 					});
 				}
+
+				that.enableSliders();
 
 				$(document).ready(function() {
 					blink.events.on('showSlide:after', function() {
@@ -297,7 +312,9 @@
 			$('.slider-control, .slider-navigator').removeClass('disabled');
 			var that = blink.activity.currentStyle,
 				subunit_index = parseInt($('.slide-counter').attr('data-subunit-index')),
-				level_six = this.subunits.length == 1 && this.subunits[0].level == 6;
+				level_six = this.subunits.length == 1 && this.subunits[0].level == 6,
+				slidePages = blink.activity.getActivityLength(),
+				nextActivity = activeSlide === slidePages - 1;
 
 			// Navigation change depending on whether the slides are accessed from
 			// a book or from a homework link or similar
@@ -305,14 +322,14 @@
 				if (this.getActualSlideNumber(this.subunits) == 1) {
 					$('.slider-control.left, .slider-navigator.left').addClass('disabled');
 				}
-				if (this.getActualSlideNumber(this.subunits) == this.totalSlides && !level_six) {
+				if (this.getActualSlideNumber(this.subunits) == this.totalSlides && !level_six && !checkModoExamen()) {
 					$('.slider-control.right, .slider-navigator.right').addClass('disabled');
 				}
 			} else {
 				if (window.activeSlide == 0) {
 					$('.slider-control.left, .slider-navigator.left').addClass('disabled');
 				}
-				if(window.activeSlide == parseInt(that.subunits[subunit_index].pags) - 1 && !level_six){
+				if(nextActivity && !level_six){
 					$('.slider-control.right, .slider-navigator.right').addClass('disabled');
 				}
 			}
@@ -345,36 +362,21 @@
                             }
                         }
                     });
-                    if(c_temas_incluidos === 0 && c_temas_incluidos !== undefined){
-                        el_tema.removeClass("locked");
-                    }else{
-                        el_tema.addClass("locked");
-                    }
-                }else if(t_actividades_abiertas > 0){
-                    el_tema.removeClass("locked");
-                }else{
-                    el_tema.addClass("locked");
                 }
-                if(t_accesos <= 0){
-                    el_tema.addClass("locked");
-                }else{
-                    el_tema.removeClass("locked");
-                }
-
             });
         }
 	};
 
-	pearsonheDevStyle.prototype = _.extend({}, new blink.theme.styles.pearsonhe(), pearsonheDevStyle.prototype);
+	pearsonheStyle.prototype = _.extend({}, new blink.theme.styles.basic(), pearsonheStyle.prototype);
 
-	blink.theme.styles['pearsonhe-dev'] = pearsonheDevStyle;
+	blink.theme.styles['pearsonhe'] = pearsonheStyle;
 
 	blink.events.on('digitalbook:bpdfloaded', function() {
 		blink.getCourse(idcurso).done(function(response) {
 			var unit = _.findWhere(response.units, {id: idtema.toString()}),
 				subunit = _.findWhere(unit.subunits, {id: window.idclase.toString()}),
             	title = unit.title.replace(/(<([^>]+)>)/ig,""),
-            	subunitTitle = subunit.title.replace(/(<([^>]+)>)/ig,""),
+            	subunitTitle = (subunit)?subunit.title.replace(/(<([^>]+)>)/ig,""):"",
             	$navbarTitle = $('.navbar.libro').find('span.title');
 			$navbarTitle.html(title + ' > ' + subunitTitle);
 		});
@@ -403,9 +405,7 @@ function loadJSON(callback) {
 		return false;
 	}
 
-	var isBlink = (window.location.href.indexOf("blinklearning.com") > -1);
-
-	if (isBlink) { //online
+	if (!blink.isApp) { //online
 		blink.getCourse(window.idcurso).done(callback);
 	} else { //local
 		var url = window.location.href.replace("curso2", "curso_json");
@@ -437,32 +437,32 @@ var pearsonheApp = window.pearsonheApp || {};
 
 pearsonheApp.courseData = '';
 pearsonheApp.tags = {
-	home : 'home',
-	unithead : 'unit_head'
+    home : 'home',
+    unithead : 'unit_head'
 }
 
 pearsonheApp.text = {
-	menu : 'Menu'
+    menu : 'Menu'
 }
 
 pearsonheApp.getCourseData = function() {
 
-	loadJSON(function(json) {
-		pearsonheApp.courseData = json;
-		pearsonheApp.init();
-	});
+    loadJSON(function(json) {
+        pearsonheApp.courseData = json;
+        pearsonheApp.init();
+    });
 
 }
 
 pearsonheApp.customBookIndex = function(data) {
 
-	if (data !== undefined){
-		pearsonheApp.courseData = data;
-	} else {
-		data = pearsonheApp.courseData;
-	}
+    if (data !== undefined){
+        pearsonheApp.courseData = data;
+    } else {
+        data = pearsonheApp.courseData;
+    }
 
-	var newBookIndexHeader = '<div class="pearsonhe-bookindex-header"><h2 class="pearsonhe-title-1">'+pearsonheApp.text.menu+'</h2></div>';
+    var newBookIndexHeader = '<div class="pearsonhe-bookindex-header"><h2 class="pearsonhe-title-1">'+pearsonheApp.text.menu+'</h2></div>';
 	var headerExists = $('#book-index #wrapper .pearsonhe-bookindex-header').length;
 
 	if (!headerExists) $('#book-index #wrapper').prepend(newBookIndexHeader);
@@ -523,41 +523,41 @@ pearsonheApp.customBookIndex = function(data) {
 
 pearsonheApp.getTocInfo = function() {
 
-	var data = pearsonheApp.courseData;
+    var data = pearsonheApp.courseData;
 
-	$.each(data.units, function(i, unit) {
-		var unitTitle = unit.title,
-				unitDescription = unit.description,
-				unitId = unit.id,
-				unitTags = unit.tags;
+    $.each(data.units, function(i, unit) {
+        var unitTitle = unit.title,
+            unitDescription = unit.description,
+            unitId = unit.id,
+			unitTags = unit.tags;
 
-		var unitTagsArray = (typeof unitTags !== 'undefined') ? unitTags.toLowerCase().split(" ") : [];
+			var unitTagsArray = (typeof unitTags !== 'undefined') ? unitTags.toLowerCase().split(" ") : [];
 
-		var newHeader = '<div class="pearson-header"><h2 class="pearsonhe-title-1">'+unitTitle+'</h2><div class="pearsonhe-description">'+unitDescription+'</div></div>';
+			var newHeader = '<div class="pearson-header"><h2 class="pearsonhe-title-1">'+unitTitle+'</h2><div class="pearsonhe-description">'+unitDescription+'</div></div>';
 
-		var $currentUnit = $('#indice .unit-content[data-id="'+unitId+'"]');
-		$currentUnit.find('.content').prepend(newHeader);
+        var $currentUnit = $('#indice .unit-content[data-id="'+unitId+'"]');
+        $currentUnit.find('.content').prepend(newHeader);
 
-		var $currentListUnit = $('#list-units li[data-id="'+unitId+'"]');
+        var $currentListUnit = $('#list-units li[data-id="'+unitId+'"]');
 
-		if (unitTagsArray.length) {
-			if (unitTagsArray.indexOf(pearsonheApp.tags.home) >= 0 ) {
-				$currentUnit.addClass('pearsonhe-toc-home pearsonhe-toc-home-content');
-				$currentListUnit.addClass('pearsonhe-toc-home');
-			}
+        if (unitTagsArray.length) {
+            if (unitTagsArray.indexOf(pearsonheApp.tags.home) >= 0 ) {
+                $currentUnit.addClass('pearsonhe-toc-home pearsonhe-toc-home-content');
+                $currentListUnit.addClass('pearsonhe-toc-home');
+            }
 
-			if (unitTagsArray.indexOf(pearsonheApp.tags.unithead) >= 0 ) {
-				$currentListUnit.addClass('pearsonhe-toc-unithead');
-				if ($currentListUnit.prevAll('li').first().hasClass('pearsonhe-toc-unithead')) {
-					$currentListUnit.prevAll('li').first().addClass('pearsonhe-toc-unithead_empty');
-				}
-				if (!$currentListUnit.nextAll('li').length) {
-					$currentListUnit.addClass('pearsonhe-toc-unithead_empty');
-				}
-			}
-		}
+            if (unitTagsArray.indexOf(pearsonheApp.tags.unithead) >= 0 ) {
+                $currentListUnit.addClass('pearsonhe-toc-unithead');
+                if ($currentListUnit.prevAll('li').first().hasClass('pearsonhe-toc-unithead')) {
+                    $currentListUnit.prevAll('li').first().addClass('pearsonhe-toc-unithead_empty');
+                }
+                if (!$currentListUnit.nextAll('li').length) {
+                    $currentListUnit.addClass('pearsonhe-toc-unithead_empty');
+                }
+            }
+        }
 
-		$.each(unit.subunits, function(i, subunit) {
+        $.each(unit.subunits, function(i, subunit) {
 
 			var subunitId = subunit.id,
 					subunitTag = subunit.tags;
@@ -574,24 +574,24 @@ pearsonheApp.getTocInfo = function() {
 				});
 			}
 
-		});
-	});
+        });
+    });
 
-	var $current = $('#list-units .litema.active');
-	$current.addClass('pearsonhe-toc-active').nextUntil('.pearsonhe-toc-unithead', 'li').addClass('pearsonhe-toc-subunit-active');
+    var $current = $('#list-units .litema.active');
+    $current.addClass('pearsonhe-toc-active').nextUntil('.pearsonhe-toc-unithead', 'li').addClass('pearsonhe-toc-subunit-active');
 
-	if (!$current.hasClass('pearsonhe-toc-unithead')){
-		$current.addClass('pearsonhe-toc-subunit-active').prevUntil('.pearsonhe-toc-unithead', 'li').addClass('pearsonhe-toc-subunit-active').prevAll('.pearsonhe-toc-unithead').first().addClass('pearsonhe-toc-unithead-ancestor');
-	} else {
-		$current.addClass('pearsonhe-toc-unithead-ancestor');
-	}
+    if (!$current.hasClass('pearsonhe-toc-unithead')){
+        $current.addClass('pearsonhe-toc-subunit-active').prevUntil('.pearsonhe-toc-unithead', 'li').addClass('pearsonhe-toc-subunit-active').prevAll('.pearsonhe-toc-unithead').first().addClass('pearsonhe-toc-unithead-ancestor');
+    } else {
+        $current.addClass('pearsonhe-toc-unithead-ancestor');
+    }
 
-	if (!$('#list-units li.pearsonhe-toc-unithead').length) {
-		$('#list-units li').addClass('pearsonhe-toc-subunit-active pearsonhe-toc-subunit-woparent');
-	}
-	if ($('#list-units li.pearsonhe-toc-unithead').first().prevAll('li:not(.pearsonhe-toc-home)').length) {
-		$('#list-units li.pearsonhe-toc-unithead').first().prevAll('li:not(.pearsonhe-toc-home)').addClass('pearsonhe-toc-subunit-active pearsonhe-toc-subunit-woparent');
-	}
+    if (!$('#list-units li.pearsonhe-toc-unithead').length) {
+        $('#list-units li').addClass('pearsonhe-toc-subunit-active pearsonhe-toc-subunit-woparent');
+    }
+    if ($('#list-units li.pearsonhe-toc-unithead').first().prevAll('li:not(.pearsonhe-toc-home)').length) {
+        $('#list-units li.pearsonhe-toc-unithead').first().prevAll('li:not(.pearsonhe-toc-home)').addClass('pearsonhe-toc-subunit-active pearsonhe-toc-subunit-woparent');
+    }
 }
 
 
@@ -599,42 +599,45 @@ pearsonheApp.getTocInfo = function() {
 
 pearsonheApp.init = function() {
 
-	pearsonheApp.getTocInfo();
+    pearsonheApp.getTocInfo();
 
 }
 
 
 $(document).ready(function() {
 
-	pearsonheApp.getCourseData();
+    pearsonheApp.getCourseData();
 
+	if(!blink.user.esAlumno()){
+		$("body").addClass("not-student");
+	}
 
-	$('body').on('click', '#list-units .js-indice-tema', function() {
+    $('body').on('click', '#list-units .js-indice-tema', function() {
 
-		if (!$(this).hasClass('pearsonhe-toc-unithead')) {
-			$(this).prevAll('li.pearsonhe-toc-unithead').first().addClass('pearsonhe-toc-unithead-ancestor');
-		} else {
-			var $sublevels = $(this).nextUntil('.pearsonhe-toc-unithead', 'li');
-			if ($(this).hasClass('pearsonhe-toc-active')) {
-				if ($sublevels.first().hasClass('pearsonhe-toc-subunit-active')) {
-					$(this).removeClass('pearsonhe-toc-unithead-ancestor');
-				} else {
-					$(this).addClass('pearsonhe-toc-unithead-ancestor');
-				}
-				$sublevels.toggleClass('pearsonhe-toc-subunit-active');
-			} else {
-				$(this).addClass('pearsonhe-toc-unithead-ancestor');
-				$sublevels.addClass('pearsonhe-toc-subunit-active');
-			}
-		}
-		if ($(this).hasClass('pearsonhe-toc-disabled')) {
-			$('#book-index .col-main').addClass('pearsonhe-hidden');
-		} else {
-			$('#book-index .col-main').removeClass('pearsonhe-hidden');
+        if (!$(this).hasClass('pearsonhe-toc-unithead')) {
+            $(this).prevAll('li.pearsonhe-toc-unithead').first().addClass('pearsonhe-toc-unithead-ancestor');
+        } else {
+            var $sublevels = $(this).nextUntil('.pearsonhe-toc-unithead', 'li');
+            if ($(this).hasClass('pearsonhe-toc-active')) {
+                if ($sublevels.first().hasClass('pearsonhe-toc-subunit-active')) {
+                    $(this).removeClass('pearsonhe-toc-unithead-ancestor');
+                } else {
+                    $(this).addClass('pearsonhe-toc-unithead-ancestor');
+                }
+                $sublevels.toggleClass('pearsonhe-toc-subunit-active');
+            } else {
+                $(this).addClass('pearsonhe-toc-unithead-ancestor');
+                $sublevels.addClass('pearsonhe-toc-subunit-active');
+            }
+        }
+        if ($(this).hasClass('pearsonhe-toc-disabled')) {
+            $('#book-index .col-main').addClass('pearsonhe-hidden');
+        } else {
+            $('#book-index .col-main').removeClass('pearsonhe-hidden');
 
-		}
-		$(this).siblings('li').removeClass('pearsonhe-toc-active').end().addClass('pearsonhe-toc-active');
-	});
+        }
+        $(this).siblings('li').removeClass('pearsonhe-toc-active').end().addClass('pearsonhe-toc-active');
+    });
 
 
 });
