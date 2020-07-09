@@ -162,7 +162,8 @@ body:not(.isTablet) #indice .units ul li.active:not(.disabled):not(.pearsonhe-to
 	color: #047B9C;
 }
 
-#indice .units ul li.pearsonhe-toc-subunit-active {
+#indice .units ul li.sek-toc-subunit-woparent,
+#indice .units ul li.pearsonhe-toc-subunit-active{
 	max-height: 100px;
 }
 
@@ -1662,6 +1663,3 @@ a:focus {
 	}
 
 }
-
-
-
